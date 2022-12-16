@@ -1,5 +1,5 @@
 //
-//  ViewController.swift
+//  OpportunityViewController.swift
 //  Eyes on Mars
 //
 //  Created by Ozan Bas on 17.12.2022.
@@ -7,13 +7,14 @@
 
 import UIKit
 
-class ViewController: UIViewController {
+class OpportunityViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view.
+        view.backgroundColor = .systemBackground
     }
+    
+
 
 
 }
-
