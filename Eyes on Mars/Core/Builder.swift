@@ -12,8 +12,7 @@ struct Builder {
     static func createTabBar() -> UITabBarController {
         let tabBar = UITabBarController()
         UITabBar.appearance().tintColor = .red
-        UITabBar.appearance().backgroundColor = .black
-        UITabBar.appearance().barTintColor = .orange
+        UITabBar.appearance().barTintColor = .black
         
         
         let curiosityVC = CuriosityViewController()
@@ -21,6 +20,7 @@ struct Builder {
         
         let opportunityVC = OpportunityViewController()
         opportunityVC.tabBarItem = UITabBarItem(title: "Opportunity", image: UIImage(systemName: "photo"), tag: 1)
+
         
         let spiritVC = SpiritViewController()
         spiritVC.tabBarItem = UITabBarItem(title: "Spirit", image: UIImage(systemName: "photo"), tag: 2)

@@ -7,27 +7,49 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		3F71272A294D31E100177035 /* SpiritViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F712729294D31E100177035 /* SpiritViewController.swift */; };
-		3F71272C294D320800177035 /* FavoritesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F71272B294D320800177035 /* FavoritesViewController.swift */; };
+		3F4463D2294E1FB600E785B2 /* FavoritesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F4463D0294E1FB600E785B2 /* FavoritesViewController.swift */; };
+		3F4463D3294E1FB600E785B2 /* FavoritesViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3F4463D1294E1FB600E785B2 /* FavoritesViewController.xib */; };
+		3F4463D5294E25D400E785B2 /* RoverImageModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F4463D4294E25D400E785B2 /* RoverImageModel.swift */; };
+		3F4463D9294E2EFB00E785B2 /* NetworkManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F4463D8294E2EFB00E785B2 /* NetworkManager.swift */; };
+		3F4463DD294E2F9500E785B2 /* EMError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F4463DC294E2F9500E785B2 /* EMError.swift */; };
+		3F4463DF294E312600E785B2 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F4463DE294E312600E785B2 /* Constants.swift */; };
+		3F4463E2294E319C00E785B2 /* UIHelpers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F4463E1294E319C00E785B2 /* UIHelpers.swift */; };
+		3F4463E7294E366C00E785B2 /* RoverPhotoCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F4463E5294E366C00E785B2 /* RoverPhotoCell.swift */; };
+		3F4463E8294E366C00E785B2 /* RoverPhotoCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3F4463E6294E366C00E785B2 /* RoverPhotoCell.xib */; };
 		3F71272E294D32B900177035 /* Builder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F71272D294D32B900177035 /* Builder.swift */; };
+		3F712735294E1D9000177035 /* OpportunityViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F712733294E1D9000177035 /* OpportunityViewController.swift */; };
+		3F712736294E1D9000177035 /* OpportunityViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3F712734294E1D9000177035 /* OpportunityViewController.xib */; };
+		3F712739294E1DB900177035 /* CuriosityViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F712737294E1DB900177035 /* CuriosityViewController.swift */; };
+		3F71273A294E1DB900177035 /* CuriosityViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3F712738294E1DB900177035 /* CuriosityViewController.xib */; };
+		3F71273D294E1E2900177035 /* SpiritViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F71273B294E1E2900177035 /* SpiritViewController.swift */; };
+		3F71273E294E1E2900177035 /* SpiritViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3F71273C294E1E2900177035 /* SpiritViewController.xib */; };
 		3F984DC1294D24E4007CA361 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F984DC0294D24E4007CA361 /* AppDelegate.swift */; };
 		3F984DC3294D24E4007CA361 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F984DC2294D24E4007CA361 /* SceneDelegate.swift */; };
 		3F984DCA294D24E5007CA361 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 3F984DC9294D24E5007CA361 /* Assets.xcassets */; };
-		3F984DD5294D255E007CA361 /* CuriosityViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F984DD4294D255D007CA361 /* CuriosityViewController.swift */; };
-		3F984DD7294D2699007CA361 /* OpportunityViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F984DD6294D2699007CA361 /* OpportunityViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		3F712729294D31E100177035 /* SpiritViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpiritViewController.swift; sourceTree = "<group>"; };
-		3F71272B294D320800177035 /* FavoritesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoritesViewController.swift; sourceTree = "<group>"; };
+		3F4463D0294E1FB600E785B2 /* FavoritesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoritesViewController.swift; sourceTree = "<group>"; };
+		3F4463D1294E1FB600E785B2 /* FavoritesViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = FavoritesViewController.xib; path = ../ViewControllers/FavoritesViewController.xib; sourceTree = "<group>"; };
+		3F4463D4294E25D400E785B2 /* RoverImageModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoverImageModel.swift; sourceTree = "<group>"; };
+		3F4463D8294E2EFB00E785B2 /* NetworkManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkManager.swift; sourceTree = "<group>"; };
+		3F4463DC294E2F9500E785B2 /* EMError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EMError.swift; sourceTree = "<group>"; };
+		3F4463DE294E312600E785B2 /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
+		3F4463E1294E319C00E785B2 /* UIHelpers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIHelpers.swift; sourceTree = "<group>"; };
+		3F4463E5294E366C00E785B2 /* RoverPhotoCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoverPhotoCell.swift; sourceTree = "<group>"; };
+		3F4463E6294E366C00E785B2 /* RoverPhotoCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = RoverPhotoCell.xib; sourceTree = "<group>"; };
 		3F71272D294D32B900177035 /* Builder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Builder.swift; sourceTree = "<group>"; };
+		3F712733294E1D9000177035 /* OpportunityViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OpportunityViewController.swift; sourceTree = "<group>"; };
+		3F712734294E1D9000177035 /* OpportunityViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = OpportunityViewController.xib; sourceTree = "<group>"; };
+		3F712737294E1DB900177035 /* CuriosityViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CuriosityViewController.swift; sourceTree = "<group>"; };
+		3F712738294E1DB900177035 /* CuriosityViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CuriosityViewController.xib; sourceTree = "<group>"; };
+		3F71273B294E1E2900177035 /* SpiritViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpiritViewController.swift; sourceTree = "<group>"; };
+		3F71273C294E1E2900177035 /* SpiritViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SpiritViewController.xib; sourceTree = "<group>"; };
 		3F984DBD294D24E4007CA361 /* Eyes on Mars.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Eyes on Mars.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		3F984DC0294D24E4007CA361 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		3F984DC2294D24E4007CA361 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
 		3F984DC9294D24E5007CA361 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		3F984DCE294D24E5007CA361 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		3F984DD4294D255D007CA361 /* CuriosityViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CuriosityViewController.swift; sourceTree = "<group>"; };
-		3F984DD6294D2699007CA361 /* OpportunityViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OpportunityViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -41,6 +63,89 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		3F4463D6294E260A00E785B2 /* Core */ = {
+			isa = PBXGroup;
+			children = (
+				3F984DC9294D24E5007CA361 /* Assets.xcassets */,
+				3F984DC0294D24E4007CA361 /* AppDelegate.swift */,
+				3F984DC2294D24E4007CA361 /* SceneDelegate.swift */,
+				3F71272D294D32B900177035 /* Builder.swift */,
+			);
+			path = Core;
+			sourceTree = "<group>";
+		};
+		3F4463D7294E2EE400E785B2 /* Managers */ = {
+			isa = PBXGroup;
+			children = (
+				3F4463D8294E2EFB00E785B2 /* NetworkManager.swift */,
+			);
+			path = Managers;
+			sourceTree = "<group>";
+		};
+		3F4463DA294E2F5300E785B2 /* Utilities */ = {
+			isa = PBXGroup;
+			children = (
+				3F4463DC294E2F9500E785B2 /* EMError.swift */,
+				3F4463DE294E312600E785B2 /* Constants.swift */,
+				3F4463E1294E319C00E785B2 /* UIHelpers.swift */,
+			);
+			path = Utilities;
+			sourceTree = "<group>";
+		};
+		3F4463E3294E361200E785B2 /* CustomViews */ = {
+			isa = PBXGroup;
+			children = (
+				3F4463E4294E362200E785B2 /* Cells */,
+			);
+			path = CustomViews;
+			sourceTree = "<group>";
+		};
+		3F4463E4294E362200E785B2 /* Cells */ = {
+			isa = PBXGroup;
+			children = (
+				3F4463E5294E366C00E785B2 /* RoverPhotoCell.swift */,
+				3F4463E6294E366C00E785B2 /* RoverPhotoCell.xib */,
+			);
+			path = Cells;
+			sourceTree = "<group>";
+		};
+		3F71273F294E1EDA00177035 /* Scenes */ = {
+			isa = PBXGroup;
+			children = (
+				3F4463D1294E1FB600E785B2 /* FavoritesViewController.xib */,
+				3F712734294E1D9000177035 /* OpportunityViewController.xib */,
+				3F712738294E1DB900177035 /* CuriosityViewController.xib */,
+				3F71273C294E1E2900177035 /* SpiritViewController.xib */,
+			);
+			path = Scenes;
+			sourceTree = "<group>";
+		};
+		3F712740294E1EE000177035 /* ViewControllers */ = {
+			isa = PBXGroup;
+			children = (
+				3F712733294E1D9000177035 /* OpportunityViewController.swift */,
+				3F712737294E1DB900177035 /* CuriosityViewController.swift */,
+				3F71273B294E1E2900177035 /* SpiritViewController.swift */,
+				3F4463D0294E1FB600E785B2 /* FavoritesViewController.swift */,
+			);
+			path = ViewControllers;
+			sourceTree = "<group>";
+		};
+		3F712741294E1EEE00177035 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				3F4463D4294E25D400E785B2 /* RoverImageModel.swift */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		3F712742294E1EFD00177035 /* ViewModels */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = ViewModels;
+			sourceTree = "<group>";
+		};
 		3F984DB4294D24E4007CA361 = {
 			isa = PBXGroup;
 			children = (
@@ -60,15 +165,15 @@
 		3F984DBF294D24E4007CA361 /* Eyes on Mars */ = {
 			isa = PBXGroup;
 			children = (
-				3F984DC0294D24E4007CA361 /* AppDelegate.swift */,
-				3F984DC2294D24E4007CA361 /* SceneDelegate.swift */,
-				3F71272D294D32B900177035 /* Builder.swift */,
-				3F984DC9294D24E5007CA361 /* Assets.xcassets */,
+				3F4463D6294E260A00E785B2 /* Core */,
+				3F71273F294E1EDA00177035 /* Scenes */,
+				3F712740294E1EE000177035 /* ViewControllers */,
+				3F712742294E1EFD00177035 /* ViewModels */,
+				3F4463E3294E361200E785B2 /* CustomViews */,
+				3F712741294E1EEE00177035 /* Models */,
+				3F4463D7294E2EE400E785B2 /* Managers */,
+				3F4463DA294E2F5300E785B2 /* Utilities */,
 				3F984DCE294D24E5007CA361 /* Info.plist */,
-				3F984DD4294D255D007CA361 /* CuriosityViewController.swift */,
-				3F984DD6294D2699007CA361 /* OpportunityViewController.swift */,
-				3F712729294D31E100177035 /* SpiritViewController.swift */,
-				3F71272B294D320800177035 /* FavoritesViewController.swift */,
 			);
 			path = "Eyes on Mars";
 			sourceTree = "<group>";
@@ -132,6 +237,11 @@
 			buildActionMask = 2147483647;
 			files = (
 				3F984DCA294D24E5007CA361 /* Assets.xcassets in Resources */,
+				3F71273A294E1DB900177035 /* CuriosityViewController.xib in Resources */,
+				3F712736294E1D9000177035 /* OpportunityViewController.xib in Resources */,
+				3F4463D3294E1FB600E785B2 /* FavoritesViewController.xib in Resources */,
+				3F71273E294E1E2900177035 /* SpiritViewController.xib in Resources */,
+				3F4463E8294E366C00E785B2 /* RoverPhotoCell.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -142,12 +252,18 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				3F71272A294D31E100177035 /* SpiritViewController.swift in Sources */,
-				3F71272C294D320800177035 /* FavoritesViewController.swift in Sources */,
+				3F4463DD294E2F9500E785B2 /* EMError.swift in Sources */,
+				3F4463DF294E312600E785B2 /* Constants.swift in Sources */,
+				3F4463D9294E2EFB00E785B2 /* NetworkManager.swift in Sources */,
+				3F4463E2294E319C00E785B2 /* UIHelpers.swift in Sources */,
+				3F71273D294E1E2900177035 /* SpiritViewController.swift in Sources */,
 				3F984DC1294D24E4007CA361 /* AppDelegate.swift in Sources */,
-				3F984DD5294D255E007CA361 /* CuriosityViewController.swift in Sources */,
+				3F4463D5294E25D400E785B2 /* RoverImageModel.swift in Sources */,
+				3F4463D2294E1FB600E785B2 /* FavoritesViewController.swift in Sources */,
+				3F4463E7294E366C00E785B2 /* RoverPhotoCell.swift in Sources */,
+				3F712735294E1D9000177035 /* OpportunityViewController.swift in Sources */,
 				3F984DC3294D24E4007CA361 /* SceneDelegate.swift in Sources */,
-				3F984DD7294D2699007CA361 /* OpportunityViewController.swift in Sources */,
+				3F712739294E1DB900177035 /* CuriosityViewController.swift in Sources */,
 				3F71272E294D32B900177035 /* Builder.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
