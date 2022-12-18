@@ -14,16 +14,22 @@ class CuriosityViewController: UIViewController {
 
     @IBOutlet weak var filterPopUpButton: EMFilterButton!
     @IBOutlet weak var collectionView: UICollectionView!
+    @IBOutlet weak var datePicker: UIDatePicker!
     
     var roverModel: [Photo] = []
     var isFiltered = false
     var page: Int = 1
     
+    var selectedDate: String? {
+        didSet {
+            networkCall(cam: selectedCam ?? "")
+        }
+    }
     
     var selectedCam: String? {
         didSet {
             networkCall(cam: selectedCam ?? "")
-
+            print(datePicker.date.inNasaFormat())
         }
     }
     
@@ -35,6 +41,7 @@ class CuriosityViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        configureDatePicker()
         configureViewController()
         networkCall(cam: selectedCam ?? "")
         setPopUpButton()
@@ -48,7 +55,7 @@ class CuriosityViewController: UIViewController {
     //MARK: - Actions
     func networkCall(cam: String) {
         let service = NetworkManager.shared
-        let urlString = service.urlCreator(rover: Endpoints.curiosity, page: page, camCodeName: selectedCam ?? "")
+        let urlString = service.urlCreator(rover: Endpoints.curiosity, page: page, camCodeName: selectedCam ?? "", earthDate: selectedDate ?? datePicker.date.inNasaFormat())
         
         
         service.request(urlString: urlString) { [weak self] (result: Result<RoverImageModel, EMError>) in
@@ -99,7 +106,14 @@ class CuriosityViewController: UIViewController {
         
     }
     
+    func configureDatePicker() {
+        datePicker.addTarget(self, action: #selector(dateSelected), for: .editingDidEnd)
+       
+    }
     
+    @objc func dateSelected() {
+        selectedDate = datePicker.date.inNasaFormat()
+    }
     
     func configureViewController() {
         view.backgroundColor = .systemBackground
@@ -110,7 +124,6 @@ class CuriosityViewController: UIViewController {
     func configureCollectionView() {
         
         collectionView.collectionViewLayout = twoColumnFlowLayout(for: view)
-        
         collectionView.register(UINib(nibName: RoverPhotoCell.reuseId, bundle: nil), forCellWithReuseIdentifier: RoverPhotoCell.reuseId)
         collectionView.dataSource = self
         

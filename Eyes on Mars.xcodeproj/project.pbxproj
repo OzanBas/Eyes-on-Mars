@@ -29,6 +29,7 @@
 		3F984DC3294D24E4007CA361 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F984DC2294D24E4007CA361 /* SceneDelegate.swift */; };
 		3F984DCA294D24E5007CA361 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 3F984DC9294D24E5007CA361 /* Assets.xcassets */; };
 		3FF63495294F4F9C008DEC22 /* EMFilterButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3FF63494294F4F9C008DEC22 /* EMFilterButton.swift */; };
+		3FF63497294FC005008DEC22 /* Date+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3FF63496294FC004008DEC22 /* Date+Ext.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -55,6 +56,7 @@
 		3F984DC9294D24E5007CA361 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		3F984DCE294D24E5007CA361 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		3FF63494294F4F9C008DEC22 /* EMFilterButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EMFilterButton.swift; sourceTree = "<group>"; };
+		3FF63496294FC004008DEC22 /* Date+Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Date+Ext.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -164,6 +166,7 @@
 			isa = PBXGroup;
 			children = (
 				3F73EA14294E846A0046782C /* UIImageView+Ext.swift */,
+				3FF63496294FC004008DEC22 /* Date+Ext.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -285,6 +288,7 @@
 				3F4463DD294E2F9500E785B2 /* EMError.swift in Sources */,
 				3F4463DF294E312600E785B2 /* Constants.swift in Sources */,
 				3F4463D9294E2EFB00E785B2 /* NetworkManager.swift in Sources */,
+				3FF63497294FC005008DEC22 /* Date+Ext.swift in Sources */,
 				3FF63495294F4F9C008DEC22 /* EMFilterButton.swift in Sources */,
 				3F4463E2294E319C00E785B2 /* UIHelpers.swift in Sources */,
 				3F71273D294E1E2900177035 /* SpiritViewController.swift in Sources */,
