@@ -11,23 +11,36 @@ class RoverPhotoCell: UICollectionViewCell {
 
     static let reuseId = "RoverPhotoCell"
     
-    
     @IBOutlet weak var roverImage: UIImageView!
     @IBOutlet weak var infoLabel: UILabel!
-    
+    @IBOutlet weak var cellView: UIView!
     
     override func awakeFromNib() {
         super.awakeFromNib()
-        // Initialization code
+        configureCell()
     }
 
 //MARK: - Configuration
-    func set(with data: RoverImageModel, at indexPath: Int) {
-        let roverName = data.photos[indexPath].rover?.name ?? "Null"
-        let camName = data.photos[indexPath].camera?.name ?? "Cam unknown"
+    
+    func configureCell() {
+        
+        roverImage.layer.cornerRadius = 15
+        roverImage.contentMode = .scaleAspectFill
+        
+    }
+    
+    
+    func set(with roverModel: Photo) {
+        let roverName = roverModel.rover?.name ?? "Null"
+        let camName = roverModel.camera?.name ?? "Cam unknown"
         
         infoLabel.text = "\(roverName) on \(camName)"
-        
+        if let image = roverModel.imgSrc {
+            DispatchQueue.main.async {
+                self.roverImage.setImageWithKingFisher(with: image)
+
+            }
+        }
     }
     
     

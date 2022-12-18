@@ -23,9 +23,12 @@
 		3F71273A294E1DB900177035 /* CuriosityViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3F712738294E1DB900177035 /* CuriosityViewController.xib */; };
 		3F71273D294E1E2900177035 /* SpiritViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F71273B294E1E2900177035 /* SpiritViewController.swift */; };
 		3F71273E294E1E2900177035 /* SpiritViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3F71273C294E1E2900177035 /* SpiritViewController.xib */; };
+		3F73EA12294E84460046782C /* Kingfisher in Frameworks */ = {isa = PBXBuildFile; productRef = 3F73EA11294E84460046782C /* Kingfisher */; };
+		3F73EA15294E846A0046782C /* UIImageView+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F73EA14294E846A0046782C /* UIImageView+Ext.swift */; };
 		3F984DC1294D24E4007CA361 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F984DC0294D24E4007CA361 /* AppDelegate.swift */; };
 		3F984DC3294D24E4007CA361 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F984DC2294D24E4007CA361 /* SceneDelegate.swift */; };
 		3F984DCA294D24E5007CA361 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 3F984DC9294D24E5007CA361 /* Assets.xcassets */; };
+		3FF63495294F4F9C008DEC22 /* EMFilterButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3FF63494294F4F9C008DEC22 /* EMFilterButton.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -45,11 +48,13 @@
 		3F712738294E1DB900177035 /* CuriosityViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CuriosityViewController.xib; sourceTree = "<group>"; };
 		3F71273B294E1E2900177035 /* SpiritViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpiritViewController.swift; sourceTree = "<group>"; };
 		3F71273C294E1E2900177035 /* SpiritViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SpiritViewController.xib; sourceTree = "<group>"; };
+		3F73EA14294E846A0046782C /* UIImageView+Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIImageView+Ext.swift"; sourceTree = "<group>"; };
 		3F984DBD294D24E4007CA361 /* Eyes on Mars.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Eyes on Mars.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		3F984DC0294D24E4007CA361 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		3F984DC2294D24E4007CA361 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
 		3F984DC9294D24E5007CA361 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		3F984DCE294D24E5007CA361 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		3FF63494294F4F9C008DEC22 /* EMFilterButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EMFilterButton.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -57,12 +62,20 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				3F73EA12294E84460046782C /* Kingfisher in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		3F2E3258294E891400812EB0 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 		3F4463D6294E260A00E785B2 /* Core */ = {
 			isa = PBXGroup;
 			children = (
@@ -96,6 +109,7 @@
 			isa = PBXGroup;
 			children = (
 				3F4463E4294E362200E785B2 /* Cells */,
+				3FF63494294F4F9C008DEC22 /* EMFilterButton.swift */,
 			);
 			path = CustomViews;
 			sourceTree = "<group>";
@@ -146,11 +160,20 @@
 			path = ViewModels;
 			sourceTree = "<group>";
 		};
+		3F73EA13294E844E0046782C /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				3F73EA14294E846A0046782C /* UIImageView+Ext.swift */,
+			);
+			path = Extensions;
+			sourceTree = "<group>";
+		};
 		3F984DB4294D24E4007CA361 = {
 			isa = PBXGroup;
 			children = (
 				3F984DBF294D24E4007CA361 /* Eyes on Mars */,
 				3F984DBE294D24E4007CA361 /* Products */,
+				3F2E3258294E891400812EB0 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -173,6 +196,7 @@
 				3F712741294E1EEE00177035 /* Models */,
 				3F4463D7294E2EE400E785B2 /* Managers */,
 				3F4463DA294E2F5300E785B2 /* Utilities */,
+				3F73EA13294E844E0046782C /* Extensions */,
 				3F984DCE294D24E5007CA361 /* Info.plist */,
 			);
 			path = "Eyes on Mars";
@@ -194,6 +218,9 @@
 			dependencies = (
 			);
 			name = "Eyes on Mars";
+			packageProductDependencies = (
+				3F73EA11294E84460046782C /* Kingfisher */,
+			);
 			productName = "Eyes on Mars";
 			productReference = 3F984DBD294D24E4007CA361 /* Eyes on Mars.app */;
 			productType = "com.apple.product-type.application";
@@ -222,6 +249,9 @@
 				Base,
 			);
 			mainGroup = 3F984DB4294D24E4007CA361;
+			packageReferences = (
+				3F73EA10294E84460046782C /* XCRemoteSwiftPackageReference "Kingfisher" */,
+			);
 			productRefGroup = 3F984DBE294D24E4007CA361 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -255,9 +285,11 @@
 				3F4463DD294E2F9500E785B2 /* EMError.swift in Sources */,
 				3F4463DF294E312600E785B2 /* Constants.swift in Sources */,
 				3F4463D9294E2EFB00E785B2 /* NetworkManager.swift in Sources */,
+				3FF63495294F4F9C008DEC22 /* EMFilterButton.swift in Sources */,
 				3F4463E2294E319C00E785B2 /* UIHelpers.swift in Sources */,
 				3F71273D294E1E2900177035 /* SpiritViewController.swift in Sources */,
 				3F984DC1294D24E4007CA361 /* AppDelegate.swift in Sources */,
+				3F73EA15294E846A0046782C /* UIImageView+Ext.swift in Sources */,
 				3F4463D5294E25D400E785B2 /* RoverImageModel.swift in Sources */,
 				3F4463D2294E1FB600E785B2 /* FavoritesViewController.swift in Sources */,
 				3F4463E7294E366C00E785B2 /* RoverPhotoCell.swift in Sources */,
@@ -399,6 +431,7 @@
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -406,9 +439,12 @@
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = "ozan.Eyes-on-Mars";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
+				SUPPORTS_MACCATALYST = NO;
+				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = YES;
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Debug;
 		};
@@ -426,6 +462,7 @@
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -433,9 +470,12 @@
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = "ozan.Eyes-on-Mars";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
+				SUPPORTS_MACCATALYST = NO;
+				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = YES;
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Release;
 		};
@@ -461,6 +501,25 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		3F73EA10294E84460046782C /* XCRemoteSwiftPackageReference "Kingfisher" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/onevcat/Kingfisher";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 7.0.0;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		3F73EA11294E84460046782C /* Kingfisher */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 3F73EA10294E84460046782C /* XCRemoteSwiftPackageReference "Kingfisher" */;
+			productName = Kingfisher;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = 3F984DB5294D24E4007CA361 /* Project object */;
 }

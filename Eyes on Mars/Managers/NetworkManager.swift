@@ -18,9 +18,19 @@ class NetworkManager {
     let decoder = JSONDecoder()
     
     
-    func request<T:Decodable>(for rover: String, page: Int, completion: @escaping (Result<T, EMError> ) -> Void) {
+    func urlCreator(rover: String, page: Int, camCodeName: String) -> String {
+        var camEndpoint = "&camera="
+        if camCodeName == "" { camEndpoint = "" }
         
-        let urlString = baseURL + rover + Endpoints.sol + Endpoints.page + String(page) + Endpoints.apiKey
+        let urlString = baseURL + rover + Endpoints.sol + Endpoints.page + String(page) + camEndpoint + camCodeName + Endpoints.apiKey
+        return urlString
+    }
+    
+    
+
+    func request<T:Decodable>(urlString: String, completion: @escaping (Result<T, EMError> ) -> Void) {
+        
+        decoder.keyDecodingStrategy = .convertFromSnakeCase
         
         guard let url = URL(string: urlString) else { return }
         print(url)
@@ -42,8 +52,7 @@ class NetworkManager {
             }
             
             do {
-                self.decoder.keyDecodingStrategy = .convertFromSnakeCase
-                let result = try JSONDecoder().decode(T.self, from: data)
+                let result = try self.decoder.decode(T.self, from: data)
                 completion(.success(result))
             } catch {
                 print(error)
