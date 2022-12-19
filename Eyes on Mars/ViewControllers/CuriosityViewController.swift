@@ -7,33 +7,26 @@
 
 import UIKit
 
+
 class CuriosityViewController: UIViewController {
     
 //MARK: - Properties
 
+    @IBOutlet weak var titleLabel: UILabel!
     @IBOutlet weak var filterPopUpButton: EMFilterButton!
     @IBOutlet weak var collectionView: UICollectionView!
     @IBOutlet weak var datePicker: UIDatePicker!
     
-    var roverModel: [Photo] = []
-    var page: Int = 1
-    var isLoadingMorePhotos = false
-    var isMorePhotosAvailable = true
+    var viewModel: CuriosityViewModel!
     
-    var selectedDate: String = "2016-12-19" {
-        didSet {
-            roverModel = []
-            isMorePhotosAvailable = true
-            networkCall()
-        }
+    
+    init(viewModel: CuriosityViewModel) {
+        super.init(nibName: nil, bundle: nil)
+        self.viewModel = viewModel
     }
     
-    var selectedCam: String = "" {
-        didSet {
-            roverModel = []
-            networkCall()
-            print(datePicker.date.inNasaFormat())
-        }
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
     }
     
     
@@ -42,43 +35,24 @@ class CuriosityViewController: UIViewController {
         super.viewDidLoad()
         
         configureViewController()
-        networkCall()
+        viewModel.requestNetworkCall()
     }
     
     
 //MARK: - Actions
-    func networkCall() {
-        let service = NetworkManager.shared
-        let urlString = service.urlCreator(rover: Endpoints.curiosity, page: page, camCodeName: selectedCam, earthDate: selectedDate)
-        print(urlString)
-        
-        isLoadingMorePhotos = true
-        service.request(urlString: urlString) { [weak self] (result: Result<RoverImageModel, EMError>) in
-            guard let self = self else { return }
-            switch result {
-            case .success(let data):
-                DispatchQueue.main.async {
-                    if data.photos.count < 25 { self.isMorePhotosAvailable = false }
-                    self.roverModel.append(contentsOf: data.photos)
-                    self.collectionView.reloadData()
-                }
-            case .failure(let error):
-                print(error.rawValue)
-            }
-        }
-        isLoadingMorePhotos = false
-    }
     
     
     @objc func dateSelected() {
-        selectedDate = datePicker.date.inNasaFormat()
+        viewModel.selectedDate = datePicker.date.inNasaFormat()
     }
     
     
 //MARK: - Configurations
     
     func configureViewController() {
-        view.backgroundColor = .systemBackground
+        titleLabel.text = "Curiosity"
+        view.backgroundColor = .systemGray6
+        viewModel.delegate = self
         configureCollectionView()
         setPopUpButton()
         configureDatePicker()
@@ -89,12 +63,12 @@ class CuriosityViewController: UIViewController {
     
     func setPopUpButton() {
         let optionClosure = {(action : UIAction) in
-            self.isMorePhotosAvailable = true
+            self.viewModel.isMorePhotosAvailable = true
             print(action.title)
             if action.title == "All Cameras" {
-                self.selectedCam = ""
+                self.viewModel.selectedCam = ""
             } else {
-                self.selectedCam = action.title
+                self.viewModel.selectedCam = action.title
             }
         }
         
@@ -117,7 +91,6 @@ class CuriosityViewController: UIViewController {
     
     func configureDatePicker() {
         datePicker.tintColor = .orange
-        
         datePicker.addTarget(self, action: #selector(dateSelected), for: .editingDidEnd)
     }
     
@@ -134,34 +107,46 @@ class CuriosityViewController: UIViewController {
 //MARK: - CollectionView Extension
 extension CuriosityViewController: UICollectionViewDelegate, UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return roverModel.count
+        return viewModel.roverModel.count
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: RoverPhotoCell.reuseId, for: indexPath) as! RoverPhotoCell
-        cell.set(with: roverModel[indexPath.row])
-
+        
+        cell.set(with: viewModel.roverModel[indexPath.row])
         
         return cell
     }
     
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        let roverModel = viewModel.roverModel[indexPath.row]
+        let detailVC = DetailsViewController(roverModel: roverModel)
+        
+        self.present(detailVC, animated: true)
+        
+    }
+    
+    
     func scrollViewDidEndDragging(_ scrollView: UIScrollView, willDecelerate decelerate: Bool) {
         let offsetY = scrollView.contentOffset.y               // shows how much you scrolled down
         let contentHeight = scrollView.contentSize.height       // shows initial content height
-        let height = scrollView.frame.size.height + 147           // height of scrollview for current device
+        let height = scrollView.frame.size.height           // height of scrollview for current device
         
-        print("\(offsetY) must be more than \(contentHeight-height)")
         
         if offsetY > contentHeight - height {
-            guard isMorePhotosAvailable, !isLoadingMorePhotos else { return }
-            page += 1
-            print(page)
-            networkCall()
+            guard viewModel.isMorePhotosAvailable, !viewModel.isLoadingMorePhotos else { return }
+            viewModel.page += 1
+            viewModel.requestNetworkCall()
             
         }
     }
     
-    
 }
 
-
+extension CuriosityViewController: viewModelProtocol {
+    func updateData() {
+        DispatchQueue.main.async { self.collectionView.reloadData() }
+    }
+    
+    
+}

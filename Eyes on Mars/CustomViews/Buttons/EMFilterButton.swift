@@ -7,7 +7,7 @@
 
 import UIKit
 
-class EMFilterButton: UIButton {
+final class EMFilterButton: UIButton {
 
     
     override init(frame: CGRect) {

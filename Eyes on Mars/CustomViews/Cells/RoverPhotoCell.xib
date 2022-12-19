@@ -22,7 +22,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="161" height="146"/>
                         <subviews>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="photo" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="c6m-as-X5c">
-                                <rect key="frame" x="0.0" y="1.6666666666666643" width="161" height="115"/>
+                                <rect key="frame" x="5" y="6.6666666666666643" width="151" height="110"/>
                                 <color key="tintColor" systemColor="systemOrangeColor"/>
                             </imageView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Y3k-un-Kt7">
@@ -39,11 +39,11 @@
                         <constraints>
                             <constraint firstAttribute="trailing" secondItem="Y3k-un-Kt7" secondAttribute="trailing" id="6o0-QP-jRj"/>
                             <constraint firstItem="Y3k-un-Kt7" firstAttribute="leading" secondItem="b3M-cl-MAY" secondAttribute="leading" id="M6e-Hv-Zdk"/>
-                            <constraint firstItem="c6m-as-X5c" firstAttribute="leading" secondItem="b3M-cl-MAY" secondAttribute="leading" id="Xg7-lB-wxG"/>
+                            <constraint firstItem="c6m-as-X5c" firstAttribute="leading" secondItem="b3M-cl-MAY" secondAttribute="leading" constant="5" id="Xg7-lB-wxG"/>
                             <constraint firstItem="Y3k-un-Kt7" firstAttribute="top" secondItem="c6m-as-X5c" secondAttribute="bottom" id="kyU-pp-ojt"/>
                             <constraint firstAttribute="bottom" secondItem="Y3k-un-Kt7" secondAttribute="bottom" id="m64-CV-mGm"/>
-                            <constraint firstItem="c6m-as-X5c" firstAttribute="top" secondItem="b3M-cl-MAY" secondAttribute="top" id="nZp-Ok-14Q"/>
-                            <constraint firstAttribute="trailing" secondItem="c6m-as-X5c" secondAttribute="trailing" id="tlv-8f-vwc"/>
+                            <constraint firstItem="c6m-as-X5c" firstAttribute="top" secondItem="b3M-cl-MAY" secondAttribute="top" constant="5" id="nZp-Ok-14Q"/>
+                            <constraint firstAttribute="trailing" secondItem="c6m-as-X5c" secondAttribute="trailing" constant="5" id="tlv-8f-vwc"/>
                         </constraints>
                     </view>
                 </subviews>

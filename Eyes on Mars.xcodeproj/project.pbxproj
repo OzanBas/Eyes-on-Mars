@@ -30,6 +30,14 @@
 		3F984DCA294D24E5007CA361 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 3F984DC9294D24E5007CA361 /* Assets.xcassets */; };
 		3FF63495294F4F9C008DEC22 /* EMFilterButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3FF63494294F4F9C008DEC22 /* EMFilterButton.swift */; };
 		3FF63497294FC005008DEC22 /* Date+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3FF63496294FC004008DEC22 /* Date+Ext.swift */; };
+		3FF63499295074D2008DEC22 /* CuriosityViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3FF63498295074D2008DEC22 /* CuriosityViewModel.swift */; };
+		3FF6349C29509293008DEC22 /* DetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3FF6349A29509293008DEC22 /* DetailsViewController.swift */; };
+		3FF6349D29509293008DEC22 /* DetailsViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3FF6349B29509293008DEC22 /* DetailsViewController.xib */; };
+		3FF634A129509E4C008DEC22 /* EMInfoLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3FF634A029509E4C008DEC22 /* EMInfoLabel.swift */; };
+		3FF634A32950A437008DEC22 /* EMDiscriptionLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3FF634A22950A437008DEC22 /* EMDiscriptionLabel.swift */; };
+		3FF634A52950A66B008DEC22 /* DetailsCardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3FF634A42950A66B008DEC22 /* DetailsCardView.swift */; };
+		3FF634A82951036B008DEC22 /* SpiritViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3FF634A72951036B008DEC22 /* SpiritViewModel.swift */; };
+		3FF634AB29510FA0008DEC22 /* OpportunityViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3FF634AA29510FA0008DEC22 /* OpportunityViewModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -57,6 +65,14 @@
 		3F984DCE294D24E5007CA361 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		3FF63494294F4F9C008DEC22 /* EMFilterButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EMFilterButton.swift; sourceTree = "<group>"; };
 		3FF63496294FC004008DEC22 /* Date+Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Date+Ext.swift"; sourceTree = "<group>"; };
+		3FF63498295074D2008DEC22 /* CuriosityViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CuriosityViewModel.swift; sourceTree = "<group>"; };
+		3FF6349A29509293008DEC22 /* DetailsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailsViewController.swift; sourceTree = "<group>"; };
+		3FF6349B29509293008DEC22 /* DetailsViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = DetailsViewController.xib; sourceTree = "<group>"; };
+		3FF634A029509E4C008DEC22 /* EMInfoLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EMInfoLabel.swift; sourceTree = "<group>"; };
+		3FF634A22950A437008DEC22 /* EMDiscriptionLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EMDiscriptionLabel.swift; sourceTree = "<group>"; };
+		3FF634A42950A66B008DEC22 /* DetailsCardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailsCardView.swift; sourceTree = "<group>"; };
+		3FF634A72951036B008DEC22 /* SpiritViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpiritViewModel.swift; sourceTree = "<group>"; };
+		3FF634AA29510FA0008DEC22 /* OpportunityViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OpportunityViewModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -110,8 +126,10 @@
 		3F4463E3294E361200E785B2 /* CustomViews */ = {
 			isa = PBXGroup;
 			children = (
+				3FF634A62950A679008DEC22 /* Views */,
+				3FF6349F29509E27008DEC22 /* Labels */,
+				3FF6349E29509E1E008DEC22 /* Buttons */,
 				3F4463E4294E362200E785B2 /* Cells */,
-				3FF63494294F4F9C008DEC22 /* EMFilterButton.swift */,
 			);
 			path = CustomViews;
 			sourceTree = "<group>";
@@ -132,6 +150,7 @@
 				3F712734294E1D9000177035 /* OpportunityViewController.xib */,
 				3F712738294E1DB900177035 /* CuriosityViewController.xib */,
 				3F71273C294E1E2900177035 /* SpiritViewController.xib */,
+				3FF6349B29509293008DEC22 /* DetailsViewController.xib */,
 			);
 			path = Scenes;
 			sourceTree = "<group>";
@@ -143,6 +162,7 @@
 				3F712737294E1DB900177035 /* CuriosityViewController.swift */,
 				3F71273B294E1E2900177035 /* SpiritViewController.swift */,
 				3F4463D0294E1FB600E785B2 /* FavoritesViewController.swift */,
+				3FF6349A29509293008DEC22 /* DetailsViewController.swift */,
 			);
 			path = ViewControllers;
 			sourceTree = "<group>";
@@ -158,6 +178,9 @@
 		3F712742294E1EFD00177035 /* ViewModels */ = {
 			isa = PBXGroup;
 			children = (
+				3FF63498295074D2008DEC22 /* CuriosityViewModel.swift */,
+				3FF634A72951036B008DEC22 /* SpiritViewModel.swift */,
+				3FF634AA29510FA0008DEC22 /* OpportunityViewModel.swift */,
 			);
 			path = ViewModels;
 			sourceTree = "<group>";
@@ -203,6 +226,31 @@
 				3F984DCE294D24E5007CA361 /* Info.plist */,
 			);
 			path = "Eyes on Mars";
+			sourceTree = "<group>";
+		};
+		3FF6349E29509E1E008DEC22 /* Buttons */ = {
+			isa = PBXGroup;
+			children = (
+				3FF63494294F4F9C008DEC22 /* EMFilterButton.swift */,
+			);
+			path = Buttons;
+			sourceTree = "<group>";
+		};
+		3FF6349F29509E27008DEC22 /* Labels */ = {
+			isa = PBXGroup;
+			children = (
+				3FF634A029509E4C008DEC22 /* EMInfoLabel.swift */,
+				3FF634A22950A437008DEC22 /* EMDiscriptionLabel.swift */,
+			);
+			path = Labels;
+			sourceTree = "<group>";
+		};
+		3FF634A62950A679008DEC22 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				3FF634A42950A66B008DEC22 /* DetailsCardView.swift */,
+			);
+			path = Views;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -269,6 +317,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				3FF6349D29509293008DEC22 /* DetailsViewController.xib in Resources */,
 				3F984DCA294D24E5007CA361 /* Assets.xcassets in Resources */,
 				3F71273A294E1DB900177035 /* CuriosityViewController.xib in Resources */,
 				3F712736294E1D9000177035 /* OpportunityViewController.xib in Resources */,
@@ -286,18 +335,25 @@
 			buildActionMask = 2147483647;
 			files = (
 				3F4463DD294E2F9500E785B2 /* EMError.swift in Sources */,
+				3FF634A32950A437008DEC22 /* EMDiscriptionLabel.swift in Sources */,
+				3FF634A52950A66B008DEC22 /* DetailsCardView.swift in Sources */,
 				3F4463DF294E312600E785B2 /* Constants.swift in Sources */,
 				3F4463D9294E2EFB00E785B2 /* NetworkManager.swift in Sources */,
 				3FF63497294FC005008DEC22 /* Date+Ext.swift in Sources */,
 				3FF63495294F4F9C008DEC22 /* EMFilterButton.swift in Sources */,
+				3FF634A82951036B008DEC22 /* SpiritViewModel.swift in Sources */,
 				3F4463E2294E319C00E785B2 /* UIHelpers.swift in Sources */,
 				3F71273D294E1E2900177035 /* SpiritViewController.swift in Sources */,
+				3FF634A129509E4C008DEC22 /* EMInfoLabel.swift in Sources */,
+				3FF634AB29510FA0008DEC22 /* OpportunityViewModel.swift in Sources */,
 				3F984DC1294D24E4007CA361 /* AppDelegate.swift in Sources */,
 				3F73EA15294E846A0046782C /* UIImageView+Ext.swift in Sources */,
 				3F4463D5294E25D400E785B2 /* RoverImageModel.swift in Sources */,
 				3F4463D2294E1FB600E785B2 /* FavoritesViewController.swift in Sources */,
+				3FF6349C29509293008DEC22 /* DetailsViewController.swift in Sources */,
 				3F4463E7294E366C00E785B2 /* RoverPhotoCell.swift in Sources */,
 				3F712735294E1D9000177035 /* OpportunityViewController.swift in Sources */,
+				3FF63499295074D2008DEC22 /* CuriosityViewModel.swift in Sources */,
 				3F984DC3294D24E4007CA361 /* SceneDelegate.swift in Sources */,
 				3F712739294E1DB900177035 /* CuriosityViewController.swift in Sources */,
 				3F71272E294D32B900177035 /* Builder.swift in Sources */,

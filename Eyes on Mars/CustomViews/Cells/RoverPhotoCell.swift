@@ -24,6 +24,8 @@ class RoverPhotoCell: UICollectionViewCell {
     
     func configureCell() {
         
+        cellView.backgroundColor = .systemGray5
+        cellView.layer.cornerRadius = 15
         roverImage.layer.cornerRadius = 15
         roverImage.contentMode = .scaleAspectFill
         
@@ -31,10 +33,9 @@ class RoverPhotoCell: UICollectionViewCell {
     
     
     func set(with roverModel: Photo) {
-        let roverName = roverModel.rover?.name ?? "Null"
-        let camName = roverModel.camera?.name ?? "Cam unknown"
+        let camName = roverModel.camera?.name ?? "unknown cam"
         
-        infoLabel.text = "\(roverName) on \(camName)"
+        infoLabel.text = "From cam: \(camName)"
         if let image = roverModel.imgSrc {
             DispatchQueue.main.async {
                 self.roverImage.setImageWithKingFisher(with: image)

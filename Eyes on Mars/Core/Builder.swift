@@ -13,17 +13,16 @@ struct Builder {
         let tabBar = UITabBarController()
 
         
-        
-        let curiosityVC = CuriosityViewController()
+        let curiosityVC = CuriosityViewController(viewModel: CuriosityViewModel())
         curiosityVC.tabBarItem = UITabBarItem(title: "Curiosity", image: UIImage(systemName: "photo"), tag: 0)
         
-        let opportunityVC = OpportunityViewController()
+        let opportunityVC = OpportunityViewController(viewModel: OpportunityViewModel())
         opportunityVC.tabBarItem = UITabBarItem(title: "Opportunity", image: UIImage(systemName: "photo"), tag: 1)
         
-        let spiritVC = SpiritViewController()
+        let spiritVC = SpiritViewController(viewModel: SpiritViewModel())
         spiritVC.tabBarItem = UITabBarItem(title: "Spirit", image: UIImage(systemName: "photo"), tag: 2)
         
-        let FavoritesVC = OpportunityViewController()
+        let FavoritesVC = FavoritesViewController()
         FavoritesVC.tabBarItem = UITabBarItem(title: "Favorites", image: UIImage(systemName: "star.fill"), tag: 3)
         
         let viewControllers = [curiosityVC, opportunityVC, spiritVC, FavoritesVC]
