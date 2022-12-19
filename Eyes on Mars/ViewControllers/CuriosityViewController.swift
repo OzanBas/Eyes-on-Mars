@@ -9,84 +9,93 @@ import UIKit
 
 class CuriosityViewController: UIViewController {
     
-    //MARK: - Properties
-
+//MARK: - Properties
 
     @IBOutlet weak var filterPopUpButton: EMFilterButton!
     @IBOutlet weak var collectionView: UICollectionView!
     @IBOutlet weak var datePicker: UIDatePicker!
     
     var roverModel: [Photo] = []
-    var isFiltered = false
     var page: Int = 1
+    var isLoadingMorePhotos = false
+    var isMorePhotosAvailable = true
     
-    var selectedDate: String? {
+    var selectedDate: String = "2016-12-19" {
         didSet {
-            networkCall(cam: selectedCam ?? "")
+            roverModel = []
+            isMorePhotosAvailable = true
+            networkCall()
         }
     }
     
-    var selectedCam: String? {
+    var selectedCam: String = "" {
         didSet {
-            networkCall(cam: selectedCam ?? "")
+            roverModel = []
+            networkCall()
             print(datePicker.date.inNasaFormat())
         }
     }
     
     
-    
-    
-    
-    //MARK: - LifeCycle
+//MARK: - LifeCycle
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        configureDatePicker()
         configureViewController()
-        networkCall(cam: selectedCam ?? "")
-        setPopUpButton()
+        networkCall()
     }
     
     
-    
-    
-    
-    
-    //MARK: - Actions
-    func networkCall(cam: String) {
+//MARK: - Actions
+    func networkCall() {
         let service = NetworkManager.shared
-        let urlString = service.urlCreator(rover: Endpoints.curiosity, page: page, camCodeName: selectedCam ?? "", earthDate: selectedDate ?? datePicker.date.inNasaFormat())
+        let urlString = service.urlCreator(rover: Endpoints.curiosity, page: page, camCodeName: selectedCam, earthDate: selectedDate)
+        print(urlString)
         
-        
+        isLoadingMorePhotos = true
         service.request(urlString: urlString) { [weak self] (result: Result<RoverImageModel, EMError>) in
             guard let self = self else { return }
             switch result {
             case .success(let data):
                 DispatchQueue.main.async {
-                    self.roverModel = data.photos
+                    if data.photos.count < 25 { self.isMorePhotosAvailable = false }
+                    self.roverModel.append(contentsOf: data.photos)
                     self.collectionView.reloadData()
                 }
             case .failure(let error):
                 print(error.rawValue)
             }
         }
+        isLoadingMorePhotos = false
     }
     
-
+    
+    @objc func dateSelected() {
+        selectedDate = datePicker.date.inNasaFormat()
+    }
+    
     
 //MARK: - Configurations
     
+    func configureViewController() {
+        view.backgroundColor = .systemBackground
+        configureCollectionView()
+        setPopUpButton()
+        configureDatePicker()
+
+        
+    }
+    
+    
     func setPopUpButton() {
         let optionClosure = {(action : UIAction) in
+            self.isMorePhotosAvailable = true
             print(action.title)
             if action.title == "All Cameras" {
-                self.isFiltered = false
-                self.selectedCam = nil
+                self.selectedCam = ""
             } else {
-                self.isFiltered = true
                 self.selectedCam = action.title
             }
-            
         }
         
         filterPopUpButton.menu = UIMenu(children: [
@@ -103,34 +112,26 @@ class CuriosityViewController: UIViewController {
         ])
         filterPopUpButton.showsMenuAsPrimaryAction = true
         filterPopUpButton.changesSelectionAsPrimaryAction = true
-        
     }
+    
     
     func configureDatePicker() {
-        datePicker.addTarget(self, action: #selector(dateSelected), for: .editingDidEnd)
-       
-    }
-    
-    @objc func dateSelected() {
-        selectedDate = datePicker.date.inNasaFormat()
-    }
-    
-    func configureViewController() {
-        view.backgroundColor = .systemBackground
-        configureCollectionView()
-    }
-    
+        datePicker.tintColor = .orange
         
+        datePicker.addTarget(self, action: #selector(dateSelected), for: .editingDidEnd)
+    }
+    
+
     func configureCollectionView() {
         
         collectionView.collectionViewLayout = twoColumnFlowLayout(for: view)
         collectionView.register(UINib(nibName: RoverPhotoCell.reuseId, bundle: nil), forCellWithReuseIdentifier: RoverPhotoCell.reuseId)
         collectionView.dataSource = self
-        
+        collectionView.delegate = self
         }
-    
 }
-    
+
+//MARK: - CollectionView Extension
 extension CuriosityViewController: UICollectionViewDelegate, UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return roverModel.count
@@ -138,11 +139,26 @@ extension CuriosityViewController: UICollectionViewDelegate, UICollectionViewDat
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: RoverPhotoCell.reuseId, for: indexPath) as! RoverPhotoCell
-        print(roverModel.count)
         cell.set(with: roverModel[indexPath.row])
 
         
         return cell
+    }
+    
+    func scrollViewDidEndDragging(_ scrollView: UIScrollView, willDecelerate decelerate: Bool) {
+        let offsetY = scrollView.contentOffset.y               // shows how much you scrolled down
+        let contentHeight = scrollView.contentSize.height       // shows initial content height
+        let height = scrollView.frame.size.height + 147           // height of scrollview for current device
+        
+        print("\(offsetY) must be more than \(contentHeight-height)")
+        
+        if offsetY > contentHeight - height {
+            guard isMorePhotosAvailable, !isLoadingMorePhotos else { return }
+            page += 1
+            print(page)
+            networkCall()
+            
+        }
     }
     
     

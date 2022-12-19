@@ -27,9 +27,9 @@
                     <rect key="frame" x="0.0" y="0.0" width="390" height="147"/>
                     <subviews>
                         <button opaque="NO" contentMode="scaleToFill" showsMenuAsPrimaryAction="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" changesSelectionAsPrimaryAction="YES" translatesAutoresizingMaskIntoConstraints="NO" id="58l-BZ-UR8" customClass="EMFilterButton" customModule="Eyes_on_Mars" customModuleProvider="target">
-                            <rect key="frame" x="275" y="102" width="100" height="40"/>
+                            <rect key="frame" x="260" y="107" width="100" height="35"/>
                             <constraints>
-                                <constraint firstAttribute="height" constant="40" id="Qfg-mg-Uil"/>
+                                <constraint firstAttribute="height" constant="35" id="Qfg-mg-Uil"/>
                                 <constraint firstAttribute="width" constant="100" id="dWf-fa-73i"/>
                             </constraints>
                             <menu key="menu" id="uPp-7S-uU2">
@@ -40,21 +40,24 @@
                             </menu>
                             <state key="normal" title="Button"/>
                         </button>
-                        <datePicker contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" datePickerMode="date" style="compact" translatesAutoresizingMaskIntoConstraints="NO" id="qrG-kF-aQp">
-                            <rect key="frame" x="15" y="102" width="160" height="40"/>
+                        <datePicker contentMode="scaleToFill" contentHorizontalAlignment="leading" contentVerticalAlignment="center" datePickerMode="date" style="compact" translatesAutoresizingMaskIntoConstraints="NO" id="qrG-kF-aQp">
+                            <rect key="frame" x="15" y="104.66666666666667" width="130" height="40.000000000000014"/>
                             <constraints>
-                                <constraint firstAttribute="width" constant="160" id="hiL-is-5Qf"/>
+                                <constraint firstAttribute="width" constant="130" id="hiL-is-5Qf"/>
                                 <constraint firstAttribute="height" constant="40" id="yz2-6D-bYS"/>
                             </constraints>
+                            <date key="minimumDate" timeIntervalSinceReferenceDate="365893200">
+                                <!--2012-08-05 21:00:00 +0000-->
+                            </date>
                         </datePicker>
                     </subviews>
                     <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                     <constraints>
                         <constraint firstAttribute="bottom" secondItem="58l-BZ-UR8" secondAttribute="bottom" constant="5" id="M99-hj-141"/>
-                        <constraint firstAttribute="trailing" secondItem="58l-BZ-UR8" secondAttribute="trailing" constant="15" id="UhR-2y-5Ng"/>
+                        <constraint firstAttribute="trailing" secondItem="58l-BZ-UR8" secondAttribute="trailing" constant="30" id="UhR-2y-5Ng"/>
                         <constraint firstAttribute="height" constant="147" id="ac6-kN-cYq"/>
                         <constraint firstItem="qrG-kF-aQp" firstAttribute="leading" secondItem="inG-Mg-hBm" secondAttribute="leading" constant="15" id="c4R-KB-Hrq"/>
-                        <constraint firstAttribute="bottom" secondItem="qrG-kF-aQp" secondAttribute="bottom" constant="5" id="j2a-5a-HqR"/>
+                        <constraint firstItem="58l-BZ-UR8" firstAttribute="centerY" secondItem="qrG-kF-aQp" secondAttribute="centerY" id="tlP-23-TDg"/>
                     </constraints>
                 </view>
                 <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="none" translatesAutoresizingMaskIntoConstraints="NO" id="Dap-Iu-nap">
