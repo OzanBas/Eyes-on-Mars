@@ -46,6 +46,8 @@ class DetailsCardView: UIView {
         self.stasusValue.text = roverModel.rover?.status
         self.cameraNameValue.text = roverModel.camera?.name
         self.photodateValue.text = roverModel.earthDate
+        self.martianSolValue.text = String(roverModel.sol ?? 0)
+        
     }
     
     
@@ -58,7 +60,7 @@ class DetailsCardView: UIView {
         infoStackView.axis = .vertical
         infoStackView.distribution = .fillEqually
         
-        let valueStackView = UIStackView(arrangedSubviews: [roverNameValue, landingDateValue, launchDateValue, stasusValue, cameraNameValue, photodateValue])
+        let valueStackView = UIStackView(arrangedSubviews: [roverNameValue, landingDateValue, launchDateValue, stasusValue, cameraNameValue, photodateValue, martianSolValue])
         
         valueStackView.axis = .vertical
         valueStackView.distribution = .fillEqually

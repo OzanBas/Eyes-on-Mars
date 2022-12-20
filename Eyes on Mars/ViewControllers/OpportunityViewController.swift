@@ -7,7 +7,7 @@
 
 import UIKit
 
-class OpportunityViewController: UIViewController {
+class OpportunityViewController: EMDataRequesterVC {
 
 //MARK: - Properties
     @IBOutlet weak var titleLabel: UILabel!
@@ -127,10 +127,21 @@ extension OpportunityViewController: UICollectionViewDelegate, UICollectionViewD
 }
 
 //MARK: - Update Protocol
-extension OpportunityViewController: viewModelProtocol {
-    func updateData() {
+extension OpportunityViewController: UIUpdateProtocol {
+    func didRecieveData() {
         DispatchQueue.main.async { self.collectionView.reloadData() }
     }
     
+    func didRecieveError(error: EMError) {
+        self.presentEMAlertOnMainThread(title: "Error", message: error.rawValue, buttonText: "Ok")
+    }
+    
+    func willStartLoading() {
+        showActivityIndicator()
+    }
+    
+    func didFinishLoading() {
+        dismissActivityIndicator()
+    }
     
 }

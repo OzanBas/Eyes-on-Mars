@@ -8,7 +8,7 @@
 import UIKit
 
 
-class CuriosityViewController: UIViewController {
+class CuriosityViewController: EMDataRequesterVC {
     
 //MARK: - Properties
 
@@ -18,7 +18,7 @@ class CuriosityViewController: UIViewController {
     @IBOutlet weak var datePicker: UIDatePicker!
     
     var viewModel: CuriosityViewModel!
-    
+
     
     init(viewModel: CuriosityViewModel) {
         super.init(nibName: nil, bundle: nil)
@@ -40,6 +40,7 @@ class CuriosityViewController: UIViewController {
     
     
 //MARK: - Actions
+    
     
     
     @objc func dateSelected() {
@@ -143,9 +144,21 @@ extension CuriosityViewController: UICollectionViewDelegate, UICollectionViewDat
     
 }
 
-extension CuriosityViewController: viewModelProtocol {
-    func updateData() {
+extension CuriosityViewController: UIUpdateProtocol {
+    func didRecieveData() {
         DispatchQueue.main.async { self.collectionView.reloadData() }
+    }
+    
+    func didRecieveError(error: EMError) {
+        self.presentEMAlertOnMainThread(title: "Error", message: error.rawValue, buttonText: "Ok")
+    }
+    
+    func willStartLoading() {
+        showActivityIndicator()
+    }
+    
+    func didFinishLoading() {
+        dismissActivityIndicator()
     }
     
     

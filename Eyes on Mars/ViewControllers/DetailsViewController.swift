@@ -31,6 +31,10 @@ class DetailsViewController: UIViewController {
         super.init(coder: coder)
     }
     
+    @IBAction func exitButtonTapped(_ sender: UIButton) {
+        self.dismiss(animated: true)
+    }
+    
     func configure() {
         
         view.backgroundColor = .systemGray6

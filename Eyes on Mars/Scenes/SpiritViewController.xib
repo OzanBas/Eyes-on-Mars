@@ -37,7 +37,7 @@
                             <nil key="highlightedColor"/>
                         </label>
                         <datePicker contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" datePickerMode="date" style="compact" useCurrentDate="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ibk-jf-84H">
-                            <rect key="frame" x="15" y="77.666666666666671" width="130" height="40"/>
+                            <rect key="frame" x="15" y="78" width="130" height="40"/>
                             <constraints>
                                 <constraint firstAttribute="width" constant="130" id="R3p-Rg-Q0F"/>
                                 <constraint firstAttribute="height" constant="40" id="T1O-Sh-iup"/>

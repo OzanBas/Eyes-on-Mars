@@ -10,7 +10,6 @@ import UIKit
 
 func twoColumnFlowLayout(for view: UIView) -> UICollectionViewFlowLayout {
     let width = UIScreen.main.bounds.width
-    print(width)
     let padding: CGFloat = 15
     let itemSpacing: CGFloat = 15
     let availableWidth = width - (padding * 2) - itemSpacing

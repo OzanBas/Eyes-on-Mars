@@ -38,6 +38,12 @@
 		3FF634A52950A66B008DEC22 /* DetailsCardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3FF634A42950A66B008DEC22 /* DetailsCardView.swift */; };
 		3FF634A82951036B008DEC22 /* SpiritViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3FF634A72951036B008DEC22 /* SpiritViewModel.swift */; };
 		3FF634AB29510FA0008DEC22 /* OpportunityViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3FF634AA29510FA0008DEC22 /* OpportunityViewModel.swift */; };
+		3FF634AE2951166F008DEC22 /* EMDataRequesterVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3FF634AD2951166F008DEC22 /* EMDataRequesterVC.swift */; };
+		3FF634B02951A8AB008DEC22 /* UIViewController+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3FF634AF2951A8AB008DEC22 /* UIViewController+Ext.swift */; };
+		3FF634B22951A8F6008DEC22 /* EMAlertViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3FF634B12951A8F6008DEC22 /* EMAlertViewController.swift */; };
+		3FF634B52951C6F9008DEC22 /* Contracts.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3FF634B42951C6F9008DEC22 /* Contracts.swift */; };
+		3FF634B82951D489008DEC22 /* FavoritesCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3FF634B62951D489008DEC22 /* FavoritesCell.swift */; };
+		3FF634B92951D489008DEC22 /* FavoritesCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3FF634B72951D489008DEC22 /* FavoritesCell.xib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -73,6 +79,12 @@
 		3FF634A42950A66B008DEC22 /* DetailsCardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailsCardView.swift; sourceTree = "<group>"; };
 		3FF634A72951036B008DEC22 /* SpiritViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpiritViewModel.swift; sourceTree = "<group>"; };
 		3FF634AA29510FA0008DEC22 /* OpportunityViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OpportunityViewModel.swift; sourceTree = "<group>"; };
+		3FF634AD2951166F008DEC22 /* EMDataRequesterVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EMDataRequesterVC.swift; sourceTree = "<group>"; };
+		3FF634AF2951A8AB008DEC22 /* UIViewController+Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController+Ext.swift"; sourceTree = "<group>"; };
+		3FF634B12951A8F6008DEC22 /* EMAlertViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EMAlertViewController.swift; sourceTree = "<group>"; };
+		3FF634B42951C6F9008DEC22 /* Contracts.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Contracts.swift; sourceTree = "<group>"; };
+		3FF634B62951D489008DEC22 /* FavoritesCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoritesCell.swift; sourceTree = "<group>"; };
+		3FF634B72951D489008DEC22 /* FavoritesCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = FavoritesCell.xib; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -126,6 +138,7 @@
 		3F4463E3294E361200E785B2 /* CustomViews */ = {
 			isa = PBXGroup;
 			children = (
+				3FF634AC2951163C008DEC22 /* HelperViewControllers */,
 				3FF634A62950A679008DEC22 /* Views */,
 				3FF6349F29509E27008DEC22 /* Labels */,
 				3FF6349E29509E1E008DEC22 /* Buttons */,
@@ -139,6 +152,8 @@
 			children = (
 				3F4463E5294E366C00E785B2 /* RoverPhotoCell.swift */,
 				3F4463E6294E366C00E785B2 /* RoverPhotoCell.xib */,
+				3FF634B62951D489008DEC22 /* FavoritesCell.swift */,
+				3FF634B72951D489008DEC22 /* FavoritesCell.xib */,
 			);
 			path = Cells;
 			sourceTree = "<group>";
@@ -190,6 +205,7 @@
 			children = (
 				3F73EA14294E846A0046782C /* UIImageView+Ext.swift */,
 				3FF63496294FC004008DEC22 /* Date+Ext.swift */,
+				3FF634AF2951A8AB008DEC22 /* UIViewController+Ext.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -218,8 +234,9 @@
 				3F71273F294E1EDA00177035 /* Scenes */,
 				3F712740294E1EE000177035 /* ViewControllers */,
 				3F712742294E1EFD00177035 /* ViewModels */,
-				3F4463E3294E361200E785B2 /* CustomViews */,
 				3F712741294E1EEE00177035 /* Models */,
+				3FF634B32951C6CE008DEC22 /* Contracts */,
+				3F4463E3294E361200E785B2 /* CustomViews */,
 				3F4463D7294E2EE400E785B2 /* Managers */,
 				3F4463DA294E2F5300E785B2 /* Utilities */,
 				3F73EA13294E844E0046782C /* Extensions */,
@@ -251,6 +268,23 @@
 				3FF634A42950A66B008DEC22 /* DetailsCardView.swift */,
 			);
 			path = Views;
+			sourceTree = "<group>";
+		};
+		3FF634AC2951163C008DEC22 /* HelperViewControllers */ = {
+			isa = PBXGroup;
+			children = (
+				3FF634AD2951166F008DEC22 /* EMDataRequesterVC.swift */,
+				3FF634B12951A8F6008DEC22 /* EMAlertViewController.swift */,
+			);
+			path = HelperViewControllers;
+			sourceTree = "<group>";
+		};
+		3FF634B32951C6CE008DEC22 /* Contracts */ = {
+			isa = PBXGroup;
+			children = (
+				3FF634B42951C6F9008DEC22 /* Contracts.swift */,
+			);
+			path = Contracts;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -322,6 +356,7 @@
 				3F71273A294E1DB900177035 /* CuriosityViewController.xib in Resources */,
 				3F712736294E1D9000177035 /* OpportunityViewController.xib in Resources */,
 				3F4463D3294E1FB600E785B2 /* FavoritesViewController.xib in Resources */,
+				3FF634B92951D489008DEC22 /* FavoritesCell.xib in Resources */,
 				3F71273E294E1E2900177035 /* SpiritViewController.xib in Resources */,
 				3F4463E8294E366C00E785B2 /* RoverPhotoCell.xib in Resources */,
 			);
@@ -335,19 +370,23 @@
 			buildActionMask = 2147483647;
 			files = (
 				3F4463DD294E2F9500E785B2 /* EMError.swift in Sources */,
+				3FF634B82951D489008DEC22 /* FavoritesCell.swift in Sources */,
 				3FF634A32950A437008DEC22 /* EMDiscriptionLabel.swift in Sources */,
 				3FF634A52950A66B008DEC22 /* DetailsCardView.swift in Sources */,
 				3F4463DF294E312600E785B2 /* Constants.swift in Sources */,
 				3F4463D9294E2EFB00E785B2 /* NetworkManager.swift in Sources */,
 				3FF63497294FC005008DEC22 /* Date+Ext.swift in Sources */,
 				3FF63495294F4F9C008DEC22 /* EMFilterButton.swift in Sources */,
+				3FF634AE2951166F008DEC22 /* EMDataRequesterVC.swift in Sources */,
 				3FF634A82951036B008DEC22 /* SpiritViewModel.swift in Sources */,
 				3F4463E2294E319C00E785B2 /* UIHelpers.swift in Sources */,
 				3F71273D294E1E2900177035 /* SpiritViewController.swift in Sources */,
+				3FF634B52951C6F9008DEC22 /* Contracts.swift in Sources */,
 				3FF634A129509E4C008DEC22 /* EMInfoLabel.swift in Sources */,
 				3FF634AB29510FA0008DEC22 /* OpportunityViewModel.swift in Sources */,
 				3F984DC1294D24E4007CA361 /* AppDelegate.swift in Sources */,
 				3F73EA15294E846A0046782C /* UIImageView+Ext.swift in Sources */,
+				3FF634B22951A8F6008DEC22 /* EMAlertViewController.swift in Sources */,
 				3F4463D5294E25D400E785B2 /* RoverImageModel.swift in Sources */,
 				3F4463D2294E1FB600E785B2 /* FavoritesViewController.swift in Sources */,
 				3FF6349C29509293008DEC22 /* DetailsViewController.swift in Sources */,
@@ -355,6 +394,7 @@
 				3F712735294E1D9000177035 /* OpportunityViewController.swift in Sources */,
 				3FF63499295074D2008DEC22 /* CuriosityViewModel.swift in Sources */,
 				3F984DC3294D24E4007CA361 /* SceneDelegate.swift in Sources */,
+				3FF634B02951A8AB008DEC22 /* UIViewController+Ext.swift in Sources */,
 				3F712739294E1DB900177035 /* CuriosityViewController.swift in Sources */,
 				3F71272E294D32B900177035 /* Builder.swift in Sources */,
 			);

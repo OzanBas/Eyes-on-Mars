@@ -7,7 +7,7 @@
 
 import UIKit
 
-class SpiritViewController: UIViewController {
+class SpiritViewController: EMDataRequesterVC {
     
     //MARK: - Properties
     @IBOutlet weak var titleLabel: UILabel!
@@ -130,10 +130,22 @@ extension SpiritViewController: UICollectionViewDelegate, UICollectionViewDataSo
     
 }
 
-extension SpiritViewController: viewModelProtocol {
-    func updateData() {
+//MARK: - UIUpdateProtocol
+extension SpiritViewController: UIUpdateProtocol {
+    func didRecieveData() {
         DispatchQueue.main.async { self.collectionView.reloadData() }
     }
     
+    func didRecieveError(error: EMError) {
+        self.presentEMAlertOnMainThread(title: "Error", message: error.rawValue, buttonText: "Ok")
+    }
+    
+    func willStartLoading() {
+        showActivityIndicator()
+    }
+    
+    func didFinishLoading() {
+        dismissActivityIndicator()
+    }
     
 }

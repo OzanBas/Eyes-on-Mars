@@ -7,15 +7,10 @@
 
 import Foundation
 
-protocol viewModelProtocol {
-    func updateData()
-}
-
-
 
 class CuriosityViewModel {
     
-    var delegate: viewModelProtocol?
+    var delegate: UIUpdateProtocol?
     var roverModel: [Photo] = []
     var page: Int = 1
     var isLoadingMorePhotos = false
@@ -39,16 +34,19 @@ class CuriosityViewModel {
     func requestNetworkCall() {
         let urlString = NetworkManager.shared.urlCreator(rover: Endpoints.curiosity, page: page, camCodeName: selectedCam, earthDate: selectedDate)
         
+        delegate?.willStartLoading()
         isLoadingMorePhotos = true
-        NetworkManager.shared.request(urlString: urlString) { (result: Result<RoverImageModel, EMError>) in
-            
+        NetworkManager.shared.request(urlString: urlString) { [weak self] (result: Result<RoverImageModel, EMError>) in
+            guard let self = self else { return }
             switch result {
             case .success(let data):
                 if data.photos.count < 25 { self.isMorePhotosAvailable = false }
                 self.roverModel.append(contentsOf: data.photos)
-                self.delegate?.updateData()
+                self.delegate?.didFinishLoading()
+                self.delegate?.didRecieveData()
             case .failure(let error):
-                print(error.rawValue)
+                self.delegate?.didFinishLoading()
+                self.delegate?.didRecieveError(error: error)
             }
         }
         isLoadingMorePhotos = false

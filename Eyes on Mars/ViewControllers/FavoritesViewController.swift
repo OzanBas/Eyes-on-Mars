@@ -9,11 +9,24 @@ import UIKit
 
 class FavoritesViewController: UIViewController {
 
+//MARK: - Properties
+    @IBOutlet weak var titleLabel: UILabel!
+    @IBOutlet weak var tableView: UITableView!
+ 
+    
+//MARK: - LifeCycle
     override func viewDidLoad() {
         super.viewDidLoad()
-        view.backgroundColor = .systemBackground
-
+        configure()
     }
 
+//MARK: - Actions
 
+    
+//MARK: - Configuration
+    func configure() {
+        view.backgroundColor = .systemGray6
+        titleLabel.text = "Favorites"
+    }
+    
 }
