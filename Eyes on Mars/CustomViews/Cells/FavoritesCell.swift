@@ -9,14 +9,14 @@ import UIKit
 
 class FavoritesCell: UITableViewCell {
 
-    
+    static let reuseId = "FavoritesCell"
     @IBOutlet weak var cellImageView: UIImageView!
     @IBOutlet weak var infoLabel: EMInfoLabel!
     @IBOutlet weak var descriptiveLabel: EMDiscriptionLabel!
     
     override func awakeFromNib() {
         super.awakeFromNib()
-        // Initialization code
+        configure()
     }
 
     override func setSelected(_ selected: Bool, animated: Bool) {
@@ -24,6 +24,12 @@ class FavoritesCell: UITableViewCell {
 
         // Configure the view for the selected state
     }
+    
+    func configure() {
+        cellImageView.layer.cornerRadius = 10
+        cellImageView.contentMode = .scaleAspectFill
+    }
+    
     
     func set(roverModel: Photo) {
         

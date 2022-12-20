@@ -18,6 +18,13 @@ class NetworkManager {
     let decoder = JSONDecoder()
     
     
+    
+    func urlCreatorFilter(rover: String, page: Int, earthDate: String) -> String {
+        let urlString = baseURL + rover + Endpoints.earthDate + earthDate + Endpoints.page + String(page) + Endpoints.apiKey
+        return urlString
+    }
+    
+    
     func urlCreator(rover: String, page: Int, camCodeName: String, earthDate: String) -> String {
         var camEndpoint = "&camera="
         if camCodeName == "" { camEndpoint = "" }

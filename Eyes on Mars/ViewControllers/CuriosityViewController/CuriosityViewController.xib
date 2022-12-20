@@ -41,12 +41,15 @@
                             </menu>
                             <state key="normal" title="Button"/>
                         </button>
-                        <datePicker contentMode="scaleToFill" contentHorizontalAlignment="leading" contentVerticalAlignment="center" datePickerMode="date" style="compact" translatesAutoresizingMaskIntoConstraints="NO" id="qrG-kF-aQp">
+                        <datePicker contentMode="scaleToFill" contentHorizontalAlignment="leading" contentVerticalAlignment="center" datePickerMode="date" style="compact" useCurrentDate="NO" translatesAutoresizingMaskIntoConstraints="NO" id="qrG-kF-aQp">
                             <rect key="frame" x="15" y="77.666666666666671" width="130" height="40"/>
                             <constraints>
                                 <constraint firstAttribute="width" constant="130" id="hiL-is-5Qf"/>
                                 <constraint firstAttribute="height" constant="40" id="yz2-6D-bYS"/>
                             </constraints>
+                            <date key="date" timeIntervalSinceReferenceDate="692653823.50588703">
+                                <!--2022-12-13 19:50:23 +0000-->
+                            </date>
                             <date key="minimumDate" timeIntervalSinceReferenceDate="365893200">
                                 <!--2012-08-05 21:00:00 +0000-->
                             </date>

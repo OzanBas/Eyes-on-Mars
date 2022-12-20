@@ -1,5 +1,5 @@
 //
-//  OppourtunityViewController.swift
+//  CuriosityViewController.swift
 //  Eyes on Mars
 //
 //  Created by Ozan Bas on 17.12.2022.
@@ -7,19 +7,19 @@
 
 import UIKit
 
-class OpportunityViewController: EMDataRequesterVC {
 
-//MARK: - Properties
+class CuriosityViewController: EMDataRequesterVC {
+    
+    //MARK: - Properties
     @IBOutlet weak var titleLabel: UILabel!
+    @IBOutlet weak var filterPopUpButton: EMFilterButton!
     @IBOutlet weak var collectionView: UICollectionView!
     @IBOutlet weak var datePicker: UIDatePicker!
-    @IBOutlet weak var filterCamButton: UIButton!
+    
+    var viewModel: RoverViewModel!
     
     
-    var viewModel: OpportunityViewModel!
-    
-    
-    init(viewModel: OpportunityViewModel) {
+    init(viewModel: RoverViewModel) {
         super.init(nibName: nil, bundle: nil)
         self.viewModel = viewModel
     }
@@ -27,55 +27,70 @@ class OpportunityViewController: EMDataRequesterVC {
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
-//MARK: - Lifecycle
+    
+    
+    //MARK: - LifeCycle
     override func viewDidLoad() {
         super.viewDidLoad()
         configureViewController()
         viewModel.requestNetworkCall()
     }
-//MARK: - Actions
+    
+    
+    //MARK: - Actions
     @objc func dateSelected() {
         viewModel.selectedDate = datePicker.date.inNasaFormat()
     }
-
-//MARK: - Configurations
+    
+    
+    //MARK: - Configurations
     func configureViewController() {
-        titleLabel.text = "Opportunity"
+        titleLabel.text = "Curiosity"
         view.backgroundColor = .systemGray6
         viewModel.delegate = self
         configureCollectionView()
         setPopUpButton()
         configureDatePicker()
+        
+        
     }
+    
     
     func setPopUpButton() {
         let optionClosure = {(action : UIAction) in
-            self.viewModel.isMorePhotosAvailable = true
-            print(action.title)
             if action.title == "All Cameras" {
+                self.viewModel.isMorePhotosAvailable = true
+                self.viewModel.isFiltered = false
                 self.viewModel.selectedCam = ""
             } else {
+                self.viewModel.isFiltered = true
+                self.viewModel.isMorePhotosAvailable = false
                 self.viewModel.selectedCam = action.title
             }
         }
         
-        filterCamButton.menu = UIMenu(children: [
+        filterPopUpButton.menu = UIMenu(children: [
             UIAction(title: "All Cameras", state: .on, handler: optionClosure),
             UIAction(title: "FHAZ", handler: optionClosure),
             UIAction(title: "RHAZ", handler: optionClosure),
-            UIAction(title: "NAVCAM", handler: optionClosure),
-            UIAction(title: "PANCAM", handler: optionClosure),
-            UIAction(title: "MINITES", handler: optionClosure)
+            UIAction(title: "MAST", handler: optionClosure),
+            UIAction(title: "CHEMCAM", handler: optionClosure),
+            UIAction(title: "MAHLI", handler: optionClosure),
+            UIAction(title: "MARDI", handler: optionClosure),
+            UIAction(title: "NAVCAM", handler: optionClosure)
+            
             
         ])
-        filterCamButton.showsMenuAsPrimaryAction = true
-        filterCamButton.changesSelectionAsPrimaryAction = true
+        filterPopUpButton.showsMenuAsPrimaryAction = true
+        filterPopUpButton.changesSelectionAsPrimaryAction = true
     }
-
+    
+    
     func configureDatePicker() {
         datePicker.tintColor = .orange
         datePicker.addTarget(self, action: #selector(dateSelected), for: .editingDidEnd)
     }
+    
     
     func configureCollectionView() {
         
@@ -83,20 +98,19 @@ class OpportunityViewController: EMDataRequesterVC {
         collectionView.register(UINib(nibName: RoverPhotoCell.reuseId, bundle: nil), forCellWithReuseIdentifier: RoverPhotoCell.reuseId)
         collectionView.dataSource = self
         collectionView.delegate = self
-        }
-    
+    }
 }
 
 //MARK: - CollectionView Extension
-extension OpportunityViewController: UICollectionViewDelegate, UICollectionViewDataSource {
+extension CuriosityViewController: UICollectionViewDelegate, UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return viewModel.roverModel.count
+        viewModel.isFiltered ? viewModel.filteredRoverModel.count : viewModel.roverModel.count
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: RoverPhotoCell.reuseId, for: indexPath) as! RoverPhotoCell
         
-        cell.set(with: viewModel.roverModel[indexPath.row])
+        viewModel.isFiltered ? cell.set(with: viewModel.filteredRoverModel[indexPath.row]) : cell.set(with: viewModel.roverModel[indexPath.row])
         
         return cell
     }
@@ -126,8 +140,7 @@ extension OpportunityViewController: UICollectionViewDelegate, UICollectionViewD
     
 }
 
-//MARK: - Update Protocol
-extension OpportunityViewController: UIUpdateProtocol {
+extension CuriosityViewController: UIUpdateProtocol {
     func didRecieveData() {
         DispatchQueue.main.async { self.collectionView.reloadData() }
     }
@@ -143,5 +156,4 @@ extension OpportunityViewController: UIUpdateProtocol {
     func didFinishLoading() {
         dismissActivityIndicator()
     }
-    
 }

@@ -1,5 +1,5 @@
 //
-//  SpiritViewController.swift
+//  OppourtunityViewController.swift
 //  Eyes on Mars
 //
 //  Created by Ozan Bas on 17.12.2022.
@@ -7,18 +7,19 @@
 
 import UIKit
 
-class SpiritViewController: EMDataRequesterVC {
-    
-    //MARK: - Properties
+class OpportunityViewController: EMDataRequesterVC {
+
+//MARK: - Properties
     @IBOutlet weak var titleLabel: UILabel!
-    @IBOutlet weak var datePicker: UIDatePicker!
-    @IBOutlet weak var camButton: UIButton!
     @IBOutlet weak var collectionView: UICollectionView!
+    @IBOutlet weak var datePicker: UIDatePicker!
+    @IBOutlet weak var filterCamButton: UIButton!
     
-    var viewModel: SpiritViewModel!
+    
+    var viewModel: RoverViewModel!
     
     
-    init(viewModel: SpiritViewModel) {
+    init(viewModel: RoverViewModel) {
         super.init(nibName: nil, bundle: nil)
         self.viewModel = viewModel
     }
@@ -26,44 +27,41 @@ class SpiritViewController: EMDataRequesterVC {
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
-    
-//MARK: - LifeCycle
+//MARK: - Lifecycle
     override func viewDidLoad() {
         super.viewDidLoad()
         configureViewController()
         viewModel.requestNetworkCall()
-        
     }
-    
 //MARK: - Actions
-        @objc func dateSelected() {
-            viewModel.selectedDate = datePicker.date.inNasaFormat()
-        }
+    @objc func dateSelected() {
+        viewModel.selectedDate = datePicker.date.inNasaFormat()
+    }
 
 //MARK: - Configurations
     func configureViewController() {
-        titleLabel.text = "Spirit"
+        titleLabel.text = "Opportunity"
         view.backgroundColor = .systemGray6
         viewModel.delegate = self
         configureCollectionView()
         setPopUpButton()
         configureDatePicker()
-
-        
     }
     
     func setPopUpButton() {
         let optionClosure = {(action : UIAction) in
-            self.viewModel.isMorePhotosAvailable = true
-            print(action.title)
             if action.title == "All Cameras" {
+                self.viewModel.isMorePhotosAvailable = true
+                self.viewModel.isFiltered = false
                 self.viewModel.selectedCam = ""
             } else {
+                self.viewModel.isFiltered = true
+                self.viewModel.isMorePhotosAvailable = false
                 self.viewModel.selectedCam = action.title
             }
         }
         
-        camButton.menu = UIMenu(children: [
+        filterCamButton.menu = UIMenu(children: [
             UIAction(title: "All Cameras", state: .on, handler: optionClosure),
             UIAction(title: "FHAZ", handler: optionClosure),
             UIAction(title: "RHAZ", handler: optionClosure),
@@ -72,11 +70,10 @@ class SpiritViewController: EMDataRequesterVC {
             UIAction(title: "MINITES", handler: optionClosure)
             
         ])
-        camButton.showsMenuAsPrimaryAction = true
-        camButton.changesSelectionAsPrimaryAction = true
+        filterCamButton.showsMenuAsPrimaryAction = true
+        filterCamButton.changesSelectionAsPrimaryAction = true
     }
-    
-    
+
     func configureDatePicker() {
         datePicker.tintColor = .orange
         datePicker.addTarget(self, action: #selector(dateSelected), for: .editingDidEnd)
@@ -89,18 +86,19 @@ class SpiritViewController: EMDataRequesterVC {
         collectionView.dataSource = self
         collectionView.delegate = self
         }
-}
     
+}
+
 //MARK: - CollectionView Extension
-extension SpiritViewController: UICollectionViewDelegate, UICollectionViewDataSource {
+extension OpportunityViewController: UICollectionViewDelegate, UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return viewModel.roverModel.count
+        viewModel.isFiltered ? viewModel.filteredRoverModel.count : viewModel.roverModel.count
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: RoverPhotoCell.reuseId, for: indexPath) as! RoverPhotoCell
         
-        cell.set(with: viewModel.roverModel[indexPath.row])
+        viewModel.isFiltered ? cell.set(with: viewModel.filteredRoverModel[indexPath.row]) : cell.set(with: viewModel.roverModel[indexPath.row])
         
         return cell
     }
@@ -130,8 +128,8 @@ extension SpiritViewController: UICollectionViewDelegate, UICollectionViewDataSo
     
 }
 
-//MARK: - UIUpdateProtocol
-extension SpiritViewController: UIUpdateProtocol {
+//MARK: - Update Protocol
+extension OpportunityViewController: UIUpdateProtocol {
     func didRecieveData() {
         DispatchQueue.main.async { self.collectionView.reloadData() }
     }

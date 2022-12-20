@@ -12,6 +12,7 @@
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="DetailsViewController" customModule="Eyes_on_Mars" customModuleProvider="target">
             <connections>
                 <outlet property="detailCardView" destination="IcO-3h-M0x" id="pvi-XW-nEQ"/>
+                <outlet property="favoritesButton" destination="cvw-Kx-wjW" id="2Ca-k5-Il1"/>
                 <outlet property="imageView" destination="tve-De-XEb" id="Ti7-tl-ag9"/>
                 <outlet property="titleLabel" destination="zL8-2Q-cii" id="rp6-YS-9kJ"/>
                 <outlet property="topView" destination="oKI-M4-gfN" id="6Xz-cd-f8O"/>
@@ -54,13 +55,27 @@
                                 <action selector="exitButtonTapped:" destination="-1" eventType="touchUpInside" id="Lko-e8-FPG"/>
                             </connections>
                         </button>
+                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="cvw-Kx-wjW">
+                            <rect key="frame" x="15" y="35" width="40" height="40"/>
+                            <constraints>
+                                <constraint firstAttribute="height" constant="40" id="jeF-Pa-1XX"/>
+                                <constraint firstAttribute="width" constant="40" id="kJe-ir-5Ig"/>
+                            </constraints>
+                            <state key="normal" title="Button"/>
+                            <buttonConfiguration key="configuration" style="plain"/>
+                            <connections>
+                                <action selector="favoritesButtonTapped:" destination="-1" eventType="touchUpInside" id="lsN-sm-LsW"/>
+                            </connections>
+                        </button>
                     </subviews>
                     <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                     <constraints>
                         <constraint firstItem="zL8-2Q-cii" firstAttribute="top" secondItem="oKI-M4-gfN" secondAttribute="top" constant="40" id="BbK-Li-5aK"/>
+                        <constraint firstItem="cvw-Kx-wjW" firstAttribute="centerY" secondItem="zL8-2Q-cii" secondAttribute="centerY" id="IIR-Bl-NAb"/>
                         <constraint firstAttribute="trailing" secondItem="i0D-kU-2Dh" secondAttribute="trailing" constant="15" id="JSu-lg-N68"/>
                         <constraint firstAttribute="height" constant="100" id="RMV-W1-Jbf"/>
                         <constraint firstItem="i0D-kU-2Dh" firstAttribute="centerY" secondItem="zL8-2Q-cii" secondAttribute="centerY" id="Zl2-ll-D7S"/>
+                        <constraint firstItem="cvw-Kx-wjW" firstAttribute="leading" secondItem="oKI-M4-gfN" secondAttribute="leading" constant="15" id="i2c-UD-mHK"/>
                         <constraint firstItem="zL8-2Q-cii" firstAttribute="leading" secondItem="oKI-M4-gfN" secondAttribute="leading" constant="40" id="oIC-rw-6lp"/>
                         <constraint firstAttribute="trailing" secondItem="zL8-2Q-cii" secondAttribute="trailing" constant="40" id="oMx-cW-Dsk"/>
                     </constraints>
