@@ -20,10 +20,12 @@ final class EMInfoLabel: UILabel {
         configure()
     }
     
+    
     convenience init(title: String) {
         self.init()
         self.text = title
     }
+    
     
     func configure() {
         font = .boldSystemFont(ofSize: 16)

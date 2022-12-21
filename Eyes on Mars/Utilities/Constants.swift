@@ -5,7 +5,7 @@
 //  Created by Ozan Bas on 17.12.2022.
 //
 
-import Foundation
+import UIKit
 
 
 enum Endpoints {
@@ -22,3 +22,14 @@ enum Endpoints {
     static let cam          = "&camera="
     static let apiKey       = "&api_key=oQLbt0FhONvqyi8yR06hqYnBf0aaNwtwaYLLOgEd"
 }
+
+
+enum Images {
+    
+    static let curiosityLogo = UIImage(systemName: "camera.metering.multispot")
+    static let opportunityLogo = UIImage(systemName: "camera.metering.matrix")
+    static let spiritLogo = UIImage(systemName: "camera.metering.partial")
+    static let favorite = UIImage(systemName: "star.fill")
+    
+}
+

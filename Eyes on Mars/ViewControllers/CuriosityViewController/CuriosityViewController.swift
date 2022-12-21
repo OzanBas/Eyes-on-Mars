@@ -8,15 +8,15 @@
 import UIKit
 
 
-class CuriosityViewController: EMDataRequesterVC {
+final class CuriosityViewController: EMDataRequesterVC {
     
     //MARK: - Properties
-    @IBOutlet weak var titleLabel: UILabel!
-    @IBOutlet weak var filterPopUpButton: EMFilterButton!
-    @IBOutlet weak var collectionView: UICollectionView!
-    @IBOutlet weak var datePicker: UIDatePicker!
+    @IBOutlet private weak var titleLabel: UILabel!
+    @IBOutlet private weak var filterPopUpButton: EMFilterButton!
+    @IBOutlet private weak var collectionView: UICollectionView!
+    @IBOutlet private weak var datePicker: UIDatePicker!
     
-    var viewModel: RoverViewModel!
+    private var viewModel: RoverViewModel!
     
     
     init(viewModel: RoverViewModel) {
@@ -24,8 +24,9 @@ class CuriosityViewController: EMDataRequesterVC {
         self.viewModel = viewModel
     }
     
+    
     required init?(coder: NSCoder) {
-        fatalError("init(coder:) has not been implemented")
+        super.init(coder: coder)
     }
     
     
@@ -45,18 +46,16 @@ class CuriosityViewController: EMDataRequesterVC {
     
     //MARK: - Configurations
     func configureViewController() {
-        titleLabel.text = "Curiosity"
         view.backgroundColor = .systemGray6
+        titleLabel.text = "Curiosity"
         viewModel.delegate = self
         configureCollectionView()
         setPopUpButton()
         configureDatePicker()
-        
-        
     }
     
     
-    func setPopUpButton() {
+    private func setPopUpButton() {
         let optionClosure = {(action : UIAction) in
             if action.title == "All Cameras" {
                 self.viewModel.isMorePhotosAvailable = true
@@ -68,7 +67,7 @@ class CuriosityViewController: EMDataRequesterVC {
                 self.viewModel.selectedCam = action.title
             }
         }
-        
+    
         filterPopUpButton.menu = UIMenu(children: [
             UIAction(title: "All Cameras", state: .on, handler: optionClosure),
             UIAction(title: "FHAZ", handler: optionClosure),
@@ -79,20 +78,19 @@ class CuriosityViewController: EMDataRequesterVC {
             UIAction(title: "MARDI", handler: optionClosure),
             UIAction(title: "NAVCAM", handler: optionClosure)
             
-            
         ])
         filterPopUpButton.showsMenuAsPrimaryAction = true
         filterPopUpButton.changesSelectionAsPrimaryAction = true
     }
     
     
-    func configureDatePicker() {
+    private func configureDatePicker() {
         datePicker.tintColor = .orange
         datePicker.addTarget(self, action: #selector(dateSelected), for: .editingDidEnd)
     }
     
     
-    func configureCollectionView() {
+    private func configureCollectionView() {
         
         collectionView.collectionViewLayout = twoColumnFlowLayout(for: view)
         collectionView.register(UINib(nibName: RoverPhotoCell.reuseId, bundle: nil), forCellWithReuseIdentifier: RoverPhotoCell.reuseId)
@@ -107,6 +105,7 @@ extension CuriosityViewController: UICollectionViewDelegate, UICollectionViewDat
         viewModel.isFiltered ? viewModel.filteredRoverModel.count : viewModel.roverModel.count
     }
     
+    
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: RoverPhotoCell.reuseId, for: indexPath) as! RoverPhotoCell
         
@@ -115,12 +114,12 @@ extension CuriosityViewController: UICollectionViewDelegate, UICollectionViewDat
         return cell
     }
     
+    
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         let roverModel = viewModel.roverModel[indexPath.row]
         let detailVC = DetailsViewController(roverModel: roverModel)
         
         self.present(detailVC, animated: true)
-        
     }
     
     
@@ -134,12 +133,12 @@ extension CuriosityViewController: UICollectionViewDelegate, UICollectionViewDat
             guard viewModel.isMorePhotosAvailable, !viewModel.isLoadingMorePhotos else { return }
             viewModel.page += 1
             viewModel.requestNetworkCall()
-            
         }
     }
-    
 }
 
+
+//MARK: - UIUpdateProtocol
 extension CuriosityViewController: UIUpdateProtocol {
     func didRecieveData() {
         DispatchQueue.main.async { self.collectionView.reloadData() }

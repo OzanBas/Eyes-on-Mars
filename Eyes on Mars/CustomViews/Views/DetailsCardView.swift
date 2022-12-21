@@ -7,7 +7,7 @@
 
 import UIKit
 
-class DetailsCardView: UIView {
+final class DetailsCardView: UIView {
     
 
     private var roverNameValue      = EMDiscriptionLabel()

@@ -7,23 +7,22 @@
 
 import Foundation
 
-class RoverViewModel {
-    
-    let rover: String!
-    
+final class RoverViewModel {
+ 
     init(rover: String, defaultDate: String) {
         self.rover = rover
         self.selectedDate = defaultDate
     }
     
-    
+
+    //MARK: - Properties
+    let rover: String!
     var delegate: UIUpdateProtocol?
     var roverModel: [Photo] = []
     var filteredRoverModel: [Photo] = []
     var page: Int = 1
     var isLoadingMorePhotos = false
     var isMorePhotosAvailable = true
-    
     var isFiltered = false
     
     var selectedDate: String! {
@@ -36,7 +35,6 @@ class RoverViewModel {
         }
     }
     
-    
     var selectedCam: String = "" {
         didSet {
             filteredRoverModel = roverModel.filter({ $0.camera?.name == selectedCam })
@@ -46,8 +44,9 @@ class RoverViewModel {
     }
     
     
+    //MARK: - Actions
     func requestNetworkCall() {
-        let urlString = NetworkManager.shared.urlCreatorFilter(rover: rover, page: page, earthDate: selectedDate)
+        let urlString = NetworkManager.shared.urlCreator(rover: rover, page: page, earthDate: selectedDate)
 
         delegate?.willStartLoading()
         isLoadingMorePhotos = true

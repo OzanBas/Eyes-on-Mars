@@ -7,7 +7,7 @@
 
 import Foundation
 
-class FavoritesViewModel {
+final class FavoritesViewModel {
     
     var roverModel: [Photo] = []
     var delegate: UIUpdateProtocol?
@@ -28,5 +28,4 @@ class FavoritesViewModel {
             }
         }
     }
-    
 }

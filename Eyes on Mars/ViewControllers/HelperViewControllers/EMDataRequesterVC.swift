@@ -9,7 +9,7 @@ import UIKit
 
 class EMDataRequesterVC: UIViewController {
 
-    var contentView: UIView!
+    private var contentView: UIView!
     
     func showActivityIndicator() {
         
@@ -40,5 +40,4 @@ class EMDataRequesterVC: UIViewController {
             self.contentView = nil
         }
     }
-
 }

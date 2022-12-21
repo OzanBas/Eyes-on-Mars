@@ -7,10 +7,11 @@
 
 import Foundation
 
-// MARK: - Welcome
+// MARK: - RoverImageModel
 struct RoverImageModel: Codable, Hashable {
     var photos: [Photo]
 }
+
 
 // MARK: - Photo
 struct Photo: Codable, Hashable {
@@ -22,6 +23,7 @@ struct Photo: Codable, Hashable {
     var rover: Rover?
 }
 
+
 // MARK: - Camera
 struct Camera: Codable, Hashable {
     var id: Int?
@@ -29,6 +31,7 @@ struct Camera: Codable, Hashable {
     var roverID: Int?
     var fullName: String?
 }
+
 
 // MARK: - Rover
 struct Rover: Codable, Hashable {

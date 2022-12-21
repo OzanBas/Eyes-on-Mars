@@ -7,15 +7,15 @@
 
 import UIKit
 
-class SpiritViewController: EMDataRequesterVC {
+final class SpiritViewController: EMDataRequesterVC {
     
     //MARK: - Properties
-    @IBOutlet weak var titleLabel: UILabel!
-    @IBOutlet weak var datePicker: UIDatePicker!
-    @IBOutlet weak var camButton: UIButton!
-    @IBOutlet weak var collectionView: UICollectionView!
+    @IBOutlet private weak var titleLabel: UILabel!
+    @IBOutlet private weak var datePicker: UIDatePicker!
+    @IBOutlet private weak var camButton: UIButton!
+    @IBOutlet private weak var collectionView: UICollectionView!
     
-    var viewModel: RoverViewModel!
+    private var viewModel: RoverViewModel!
     
     
     init(viewModel: RoverViewModel) {
@@ -23,36 +23,37 @@ class SpiritViewController: EMDataRequesterVC {
         self.viewModel = viewModel
     }
     
+    
     required init?(coder: NSCoder) {
-        fatalError("init(coder:) has not been implemented")
+        super.init(coder: coder)
     }
     
-//MARK: - LifeCycle
+    
+    //MARK: - LifeCycle
     override func viewDidLoad() {
         super.viewDidLoad()
         configureViewController()
         viewModel.requestNetworkCall()
-        
     }
     
-//MARK: - Actions
+    
+    //MARK: - Actions
         @objc func dateSelected() {
             viewModel.selectedDate = datePicker.date.inNasaFormat()
         }
 
-//MARK: - Configurations
-    func configureViewController() {
+    //MARK: - Configurations
+    private func configureViewController() {
         titleLabel.text = "Spirit"
         view.backgroundColor = .systemGray6
         viewModel.delegate = self
         configureCollectionView()
         setPopUpButton()
         configureDatePicker()
-
-        
     }
     
-    func setPopUpButton() {
+    
+    private func setPopUpButton() {
         let optionClosure = {(action : UIAction) in
             if action.title == "All Cameras" {
                 self.viewModel.isMorePhotosAvailable = true
@@ -79,12 +80,13 @@ class SpiritViewController: EMDataRequesterVC {
     }
     
     
-    func configureDatePicker() {
+    private func configureDatePicker() {
         datePicker.tintColor = .orange
         datePicker.addTarget(self, action: #selector(dateSelected), for: .editingDidEnd)
     }
     
-    func configureCollectionView() {
+    
+    private func configureCollectionView() {
         
         collectionView.collectionViewLayout = twoColumnFlowLayout(for: view)
         collectionView.register(UINib(nibName: RoverPhotoCell.reuseId, bundle: nil), forCellWithReuseIdentifier: RoverPhotoCell.reuseId)
@@ -92,11 +94,15 @@ class SpiritViewController: EMDataRequesterVC {
         collectionView.delegate = self
         }
 }
-    
+   
+
 //MARK: - CollectionView Extension
 extension SpiritViewController: UICollectionViewDelegate, UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        viewModel.isFiltered ? viewModel.filteredRoverModel.count : viewModel.roverModel.count
+        let filteredItemCount = viewModel.filteredRoverModel.count
+        let itemCount = viewModel.roverModel.count
+
+        return (viewModel.isFiltered ? filteredItemCount : itemCount)
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
@@ -112,7 +118,6 @@ extension SpiritViewController: UICollectionViewDelegate, UICollectionViewDataSo
         let detailVC = DetailsViewController(roverModel: roverModel)
         
         self.present(detailVC, animated: true)
-        
     }
     
     
@@ -126,11 +131,10 @@ extension SpiritViewController: UICollectionViewDelegate, UICollectionViewDataSo
             guard viewModel.isMorePhotosAvailable, !viewModel.isLoadingMorePhotos else { return }
             viewModel.page += 1
             viewModel.requestNetworkCall()
-            
         }
     }
-    
 }
+
 
 //MARK: - UIUpdateProtocol
 extension SpiritViewController: UIUpdateProtocol {
@@ -149,5 +153,4 @@ extension SpiritViewController: UIUpdateProtocol {
     func didFinishLoading() {
         dismissActivityIndicator()
     }
-    
 }

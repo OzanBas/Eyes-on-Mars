@@ -9,28 +9,31 @@ import UIKit
 
 class FavoritesCell: UITableViewCell {
 
+    //MARK: - Properties
     static let reuseId = "FavoritesCell"
     @IBOutlet weak var cellImageView: UIImageView!
     @IBOutlet weak var infoLabel: EMInfoLabel!
     @IBOutlet weak var descriptiveLabel: EMDiscriptionLabel!
+    
     
     override func awakeFromNib() {
         super.awakeFromNib()
         configure()
     }
 
+    
     override func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
-
-        // Configure the view for the selected state
     }
     
-    func configure() {
+    
+    private func configure() {
         cellImageView.layer.cornerRadius = 10
         cellImageView.contentMode = .scaleAspectFill
     }
+   
     
-    
+    //MARK: - Actions
     func set(roverModel: Photo) {
         
         let rover = (roverModel.rover?.name)?.capitalized
@@ -44,6 +47,4 @@ class FavoritesCell: UITableViewCell {
         infoLabel.text = "\(rover ?? "null."), \(date ?? "")"
         descriptiveLabel.text = "\(camera ?? "null.")(\(cameraFull ?? "null."))"
     }
-    
-    
 }

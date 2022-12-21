@@ -18,6 +18,4 @@ enum EMError: String, Error {
     
     case savingError            = "Saving Error: Can't add this coin to your favorites list."
     case retrievingFavorites    = "Can't get your favorite coins."
-    case removingAlert          = "This coin will be removed from your favorites."
-    case addingAlert            = "This coin will be added to your favorites."
 }

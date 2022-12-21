@@ -7,16 +7,16 @@
 
 import UIKit
 
-class OpportunityViewController: EMDataRequesterVC {
+final class OpportunityViewController: EMDataRequesterVC {
 
-//MARK: - Properties
-    @IBOutlet weak var titleLabel: UILabel!
-    @IBOutlet weak var collectionView: UICollectionView!
-    @IBOutlet weak var datePicker: UIDatePicker!
-    @IBOutlet weak var filterCamButton: UIButton!
+    //MARK: - Properties
+    @IBOutlet private weak var titleLabel: UILabel!
+    @IBOutlet private weak var collectionView: UICollectionView!
+    @IBOutlet private weak var datePicker: UIDatePicker!
+    @IBOutlet private weak var filterCamButton: UIButton!
     
     
-    var viewModel: RoverViewModel!
+    private var viewModel: RoverViewModel!
     
     
     init(viewModel: RoverViewModel) {
@@ -24,22 +24,28 @@ class OpportunityViewController: EMDataRequesterVC {
         self.viewModel = viewModel
     }
     
+    
     required init?(coder: NSCoder) {
-        fatalError("init(coder:) has not been implemented")
+        super.init(coder: coder)
     }
-//MARK: - Lifecycle
+    
+    
+    //MARK: - Lifecycle
     override func viewDidLoad() {
         super.viewDidLoad()
         configureViewController()
         viewModel.requestNetworkCall()
     }
-//MARK: - Actions
+    
+    
+    //MARK: - Actions
     @objc func dateSelected() {
         viewModel.selectedDate = datePicker.date.inNasaFormat()
     }
+    
 
-//MARK: - Configurations
-    func configureViewController() {
+    //MARK: - Configurations
+    private func configureViewController() {
         titleLabel.text = "Opportunity"
         view.backgroundColor = .systemGray6
         viewModel.delegate = self
@@ -48,7 +54,8 @@ class OpportunityViewController: EMDataRequesterVC {
         configureDatePicker()
     }
     
-    func setPopUpButton() {
+    
+    private func setPopUpButton() {
         let optionClosure = {(action : UIAction) in
             if action.title == "All Cameras" {
                 self.viewModel.isMorePhotosAvailable = true
@@ -74,26 +81,29 @@ class OpportunityViewController: EMDataRequesterVC {
         filterCamButton.changesSelectionAsPrimaryAction = true
     }
 
-    func configureDatePicker() {
+    
+    private func configureDatePicker() {
         datePicker.tintColor = .orange
         datePicker.addTarget(self, action: #selector(dateSelected), for: .editingDidEnd)
     }
     
-    func configureCollectionView() {
+    
+    private func configureCollectionView() {
         
         collectionView.collectionViewLayout = twoColumnFlowLayout(for: view)
         collectionView.register(UINib(nibName: RoverPhotoCell.reuseId, bundle: nil), forCellWithReuseIdentifier: RoverPhotoCell.reuseId)
         collectionView.dataSource = self
         collectionView.delegate = self
         }
-    
 }
+
 
 //MARK: - CollectionView Extension
 extension OpportunityViewController: UICollectionViewDelegate, UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         viewModel.isFiltered ? viewModel.filteredRoverModel.count : viewModel.roverModel.count
     }
+    
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: RoverPhotoCell.reuseId, for: indexPath) as! RoverPhotoCell
@@ -103,12 +113,12 @@ extension OpportunityViewController: UICollectionViewDelegate, UICollectionViewD
         return cell
     }
     
+    
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         let roverModel = viewModel.roverModel[indexPath.row]
         let detailVC = DetailsViewController(roverModel: roverModel)
         
         self.present(detailVC, animated: true)
-        
     }
     
     
@@ -125,8 +135,8 @@ extension OpportunityViewController: UICollectionViewDelegate, UICollectionViewD
             
         }
     }
-    
 }
+
 
 //MARK: - Update Protocol
 extension OpportunityViewController: UIUpdateProtocol {
@@ -145,5 +155,4 @@ extension OpportunityViewController: UIUpdateProtocol {
     func didFinishLoading() {
         dismissActivityIndicator()
     }
-    
 }

@@ -9,29 +9,32 @@ import UIKit
 
 class RoverPhotoCell: UICollectionViewCell {
 
+    
+    //MARK: - Properties
     static let reuseId = "RoverPhotoCell"
     
     @IBOutlet weak var roverImage: UIImageView!
     @IBOutlet weak var infoLabel: UILabel!
     @IBOutlet weak var cellView: UIView!
     
+    
     override func awakeFromNib() {
         super.awakeFromNib()
         configureCell()
     }
 
-//MARK: - Configuration
+    //MARK: - Configuration
     
-    func configureCell() {
+    private func configureCell() {
         
         cellView.backgroundColor = .systemGray5
         cellView.layer.cornerRadius = 15
         roverImage.layer.cornerRadius = 15
         roverImage.contentMode = .scaleAspectFill
-        
     }
     
     
+    //MARK: - Actions
     func set(with roverModel: Photo) {
         let camName = roverModel.camera?.name ?? "unknown cam"
         
@@ -43,6 +46,4 @@ class RoverPhotoCell: UICollectionViewCell {
             }
         }
     }
-    
-    
 }

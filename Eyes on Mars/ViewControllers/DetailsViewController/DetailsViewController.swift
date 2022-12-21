@@ -7,9 +7,9 @@
 
 import UIKit
 
-class DetailsViewController: UIViewController {
+final class DetailsViewController: UIViewController {
     
-//MARK: - Properties
+    //MARK: - Properties
 
     @IBOutlet weak var favoritesButton: UIButton!
     @IBOutlet weak var topView: UIView!
@@ -17,7 +17,6 @@ class DetailsViewController: UIViewController {
     var roverModel: Photo!
     @IBOutlet weak var imageView: UIImageView!
     @IBOutlet weak var detailCardView: DetailsCardView!
-    
     
     
     init(roverModel: Photo) {
@@ -31,19 +30,19 @@ class DetailsViewController: UIViewController {
     }
     
     
-//MARK: - LifeCycle
+    //MARK: - LifeCycle
     override func viewDidLoad() {
         super.viewDidLoad()
         configureViewController()
     }
 
     
-//MARK: - Actions
+    //MARK: - Actions
     @IBAction func favoritesButtonTapped(_ sender: UIButton) {
         
         PersistenceManager.update(favorite: roverModel) { error in
             guard let error = error else { return }
-            self.presentEMAlertOnMainThread(title: "Note:", message: error.rawValue, buttonText: "Ok")
+            self.presentEMAlertOnMainThread(title: "Error:", message: error.rawValue, buttonText: "Ok")
         }
     }
     
@@ -53,8 +52,8 @@ class DetailsViewController: UIViewController {
     }
     
     
-//MARK: - Configurations
-    func configureViewController() {
+    //MARK: - Configurations
+    private func configureViewController() {
         
         view.backgroundColor = .systemGray6
         topView.backgroundColor = .systemGray6
@@ -71,7 +70,7 @@ class DetailsViewController: UIViewController {
     
     
     private func configureFavoriteButton() {
-        favoritesButton.setImage(UIImage(systemName: "star.fill"), for: .normal)
+        favoritesButton.setImage(Images.favorite, for: .normal)
         favoritesButton.tintColor = .orange
     }
 }

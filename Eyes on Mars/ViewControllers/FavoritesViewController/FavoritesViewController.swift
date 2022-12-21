@@ -7,9 +7,9 @@
 
 import UIKit
 
-class FavoritesViewController: EMDataRequesterVC {
+final class FavoritesViewController: EMDataRequesterVC {
 
-//MARK: - Properties
+    //MARK: - Properties
     @IBOutlet weak var titleLabel: UILabel!
     @IBOutlet weak var tableView: UITableView!
     var viewModel: FavoritesViewModel!
@@ -25,32 +25,28 @@ class FavoritesViewController: EMDataRequesterVC {
     }
     
     
-    
-    
-//MARK: - LifeCycle
+    //MARK: - LifeCycle
     override func viewDidLoad() {
         super.viewDidLoad()
         configureViewController()
     }
+    
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(true)
         viewModel.loadFavorites()
     }
 
-//MARK: - Actions
-
-
-    
-//MARK: - Configuration
-    func configureViewController() {
+   
+    //MARK: - Configuration
+    private func configureViewController() {
         view.backgroundColor = .systemGray6
         titleLabel.text = "Favorites"
         viewModel.delegate = self
         configureTableView()
     }
     
-    func configureTableView() {
+    private func configureTableView() {
         tableView.register(UINib(nibName: FavoritesCell.reuseId, bundle: nil), forCellReuseIdentifier: FavoritesCell.reuseId)
         tableView.rowHeight = 110
         tableView.separatorStyle = .none
@@ -76,6 +72,7 @@ extension FavoritesViewController: UITableViewDataSource, UITableViewDelegate {
         return cell
     }
     
+    
     func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
         guard editingStyle == .delete else { return }
         let favorite = viewModel.roverModel[indexPath.row]
@@ -85,17 +82,10 @@ extension FavoritesViewController: UITableViewDataSource, UITableViewDelegate {
             self.presentEMAlertOnMainThread(title: "Deleting Error", message: error?.rawValue ?? "error", buttonText: "Ok")
         }
         self.viewModel.loadFavorites()
-        
     }
-    
-    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        let detailVC = DetailsViewController(roverModel: viewModel.roverModel[indexPath.row])
-        self.present(detailVC, animated: true)
-    }
-    
-    
 }
 
+//MARK: - UIUpdateProtocol
 extension FavoritesViewController: UIUpdateProtocol {
     func didRecieveData() {
         DispatchQueue.main.async { self.tableView.reloadData() }

@@ -7,7 +7,7 @@
 
 import UIKit
 
-class EMAlertViewController: UIViewController {
+final class EMAlertViewController: UIViewController {
     
     
     //MARK: - Properties
@@ -44,7 +44,7 @@ class EMAlertViewController: UIViewController {
     }
     
     //MARK: - Configuration
-    func configureContainerView() {
+    private func configureContainerView() {
         view.addSubview(containerView)
         containerView.translatesAutoresizingMaskIntoConstraints = false
         containerView.backgroundColor =  .systemGray5
@@ -61,7 +61,7 @@ class EMAlertViewController: UIViewController {
     }
     
     
-    func configureAlertTitle() {
+    private func configureAlertTitle() {
         containerView.addSubview(alertTitleLabel)
         alertTitleLabel.translatesAutoresizingMaskIntoConstraints = false
         alertTitleLabel.textAlignment = .center
@@ -75,7 +75,7 @@ class EMAlertViewController: UIViewController {
     }
     
     
-    func configureAlertInfoLabel() {
+    private func configureAlertInfoLabel() {
         
         containerView.addSubview(alertInfoLabel)
         alertInfoLabel.translatesAutoresizingMaskIntoConstraints = false
@@ -92,7 +92,7 @@ class EMAlertViewController: UIViewController {
     }
     
     
-    func configureAlertButton() {
+    private func configureAlertButton() {
         containerView.addSubview(alertActionButton)
         alertActionButton.translatesAutoresizingMaskIntoConstraints = false
         alertActionButton.addTarget(self, action: #selector(dismissAlert), for: .touchUpInside)
@@ -109,5 +109,4 @@ class EMAlertViewController: UIViewController {
             alertActionButton.heightAnchor.constraint(equalToConstant: 35)
         ])
     }
-    
 }

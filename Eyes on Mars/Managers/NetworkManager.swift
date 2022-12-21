@@ -18,23 +18,12 @@ class NetworkManager {
     let decoder = JSONDecoder()
     
     
-    
-    func urlCreatorFilter(rover: String, page: Int, earthDate: String) -> String {
+    func urlCreator(rover: String, page: Int, earthDate: String) -> String {
         let urlString = baseURL + rover + Endpoints.earthDate + earthDate + Endpoints.page + String(page) + Endpoints.apiKey
         return urlString
     }
     
     
-    func urlCreator(rover: String, page: Int, camCodeName: String, earthDate: String) -> String {
-        var camEndpoint = "&camera="
-        if camCodeName == "" { camEndpoint = "" }
-        
-        let urlString = baseURL + rover + Endpoints.earthDate + earthDate + Endpoints.page + String(page) + camEndpoint + camCodeName + Endpoints.apiKey
-        return urlString
-    }
-    
-    
-
     func request<T:Decodable>(urlString: String, completion: @escaping (Result<T, EMError> ) -> Void) {
         
         decoder.keyDecodingStrategy = .convertFromSnakeCase
@@ -68,6 +57,4 @@ class NetworkManager {
         }
         dataTask.resume()
     }
-    
-    
 }
