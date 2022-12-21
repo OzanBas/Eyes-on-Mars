@@ -56,10 +56,10 @@
                             </connections>
                         </button>
                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="cvw-Kx-wjW">
-                            <rect key="frame" x="15" y="35" width="40" height="40"/>
+                            <rect key="frame" x="15" y="32.666666666666664" width="45" height="44.999999999999993"/>
                             <constraints>
-                                <constraint firstAttribute="height" constant="40" id="jeF-Pa-1XX"/>
-                                <constraint firstAttribute="width" constant="40" id="kJe-ir-5Ig"/>
+                                <constraint firstAttribute="height" constant="45" id="jeF-Pa-1XX"/>
+                                <constraint firstAttribute="width" constant="45" id="kJe-ir-5Ig"/>
                             </constraints>
                             <state key="normal" title="Button"/>
                             <buttonConfiguration key="configuration" style="plain"/>

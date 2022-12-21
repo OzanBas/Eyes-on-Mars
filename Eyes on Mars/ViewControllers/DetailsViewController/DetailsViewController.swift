@@ -42,7 +42,7 @@ final class DetailsViewController: UIViewController {
         
         PersistenceManager.update(favorite: roverModel) { error in
             guard let error = error else { return }
-            self.presentEMAlertOnMainThread(title: "Error:", message: error.rawValue, buttonText: "Ok")
+            self.presentEMAlertOnMainThread(title: "Updated:", message: error.rawValue, buttonText: "Ok")
         }
     }
     
@@ -72,5 +72,6 @@ final class DetailsViewController: UIViewController {
     private func configureFavoriteButton() {
         favoritesButton.setImage(Images.favorite, for: .normal)
         favoritesButton.tintColor = .orange
+        favoritesButton.contentMode = .scaleAspectFill
     }
 }

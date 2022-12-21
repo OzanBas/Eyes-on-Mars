@@ -78,8 +78,8 @@ extension FavoritesViewController: UITableViewDataSource, UITableViewDelegate {
         let favorite = viewModel.roverModel[indexPath.row]
         
         PersistenceManager.update(favorite: favorite) { [weak self] error in
-            guard let self = self else { return }
-            self.presentEMAlertOnMainThread(title: "Deleting Error", message: error?.rawValue ?? "error", buttonText: "Ok")
+            guard self != nil else { return }
+            
         }
         self.viewModel.loadFavorites()
     }
