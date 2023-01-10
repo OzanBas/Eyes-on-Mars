@@ -14,6 +14,7 @@
             <connections>
                 <outlet property="collectionView" destination="Dap-Iu-nap" id="JnV-Cq-4be"/>
                 <outlet property="datePicker" destination="qrG-kF-aQp" id="MyW-uD-LJh"/>
+                <outlet property="emptyStateView" destination="vbS-Ai-GcU" id="Xbm-7u-eGk"/>
                 <outlet property="filterPopUpButton" destination="58l-BZ-UR8" id="Sb4-lB-4p9"/>
                 <outlet property="titleLabel" destination="LNL-3Y-o5O" id="uvy-yW-uKh"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
@@ -86,6 +87,10 @@
                         <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                     </collectionViewFlowLayout>
                 </collectionView>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="vbS-Ai-GcU" customClass="EMEmptyStateView" customModule="Eyes_on_Mars" customModuleProvider="target">
+                    <rect key="frame" x="0.0" y="120" width="390" height="690"/>
+                    <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                </view>
             </subviews>
             <viewLayoutGuide key="safeArea" id="fnl-2z-Ty3"/>
             <color key="backgroundColor" systemColor="systemBackgroundColor"/>
@@ -93,10 +98,14 @@
                 <constraint firstItem="inG-Mg-hBm" firstAttribute="trailing" secondItem="fnl-2z-Ty3" secondAttribute="trailing" id="7ai-jN-2EU"/>
                 <constraint firstItem="inG-Mg-hBm" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" id="7eR-K5-Y03"/>
                 <constraint firstItem="Dap-Iu-nap" firstAttribute="top" secondItem="inG-Mg-hBm" secondAttribute="bottom" id="9cA-ec-Mig"/>
+                <constraint firstItem="fnl-2z-Ty3" firstAttribute="bottom" secondItem="vbS-Ai-GcU" secondAttribute="bottom" id="NwF-P3-00x"/>
                 <constraint firstItem="Dap-Iu-nap" firstAttribute="trailing" secondItem="fnl-2z-Ty3" secondAttribute="trailing" id="UxU-yZ-iLA"/>
                 <constraint firstItem="Dap-Iu-nap" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" id="X2O-hI-6TG"/>
+                <constraint firstItem="vbS-Ai-GcU" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" id="b18-rb-A9z"/>
                 <constraint firstItem="fnl-2z-Ty3" firstAttribute="bottom" secondItem="Dap-Iu-nap" secondAttribute="bottom" id="dLK-bz-Jji"/>
                 <constraint firstItem="inG-Mg-hBm" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" id="fp0-AU-ezX"/>
+                <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="vbS-Ai-GcU" secondAttribute="trailing" id="gSe-q6-u81"/>
+                <constraint firstItem="vbS-Ai-GcU" firstAttribute="top" secondItem="inG-Mg-hBm" secondAttribute="bottom" id="j0q-Bg-6n5"/>
             </constraints>
             <point key="canvasLocation" x="-409.23076923076923" y="-4.2654028436018958"/>
         </view>

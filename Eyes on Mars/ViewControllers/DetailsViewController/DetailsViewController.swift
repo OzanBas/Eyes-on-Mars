@@ -11,10 +11,12 @@ final class DetailsViewController: UIViewController {
     
     //MARK: - Properties
 
+    
+    var roverModel: Photo!
+    var delegate: UIUpdateProtocol?
     @IBOutlet weak var favoritesButton: UIButton!
     @IBOutlet weak var topView: UIView!
     @IBOutlet weak var titleLabel: UILabel!
-    var roverModel: Photo!
     @IBOutlet weak var imageView: UIImageView!
     @IBOutlet weak var detailCardView: DetailsCardView!
     
@@ -44,10 +46,12 @@ final class DetailsViewController: UIViewController {
             guard let error = error else { return }
             self.presentEMAlertOnMainThread(title: "Updated:", message: error.rawValue, buttonText: "Ok")
         }
+        DispatchQueue.main.async { self.favoritesButton.imageView?.setFavoriteImage(detailVC: self) }
     }
     
     
     @IBAction func exitButtonTapped(_ sender: UIButton) {
+        delegate?.didRecieveData()
         self.dismiss(animated: true)
     }
     
@@ -70,7 +74,7 @@ final class DetailsViewController: UIViewController {
     
     
     private func configureFavoriteButton() {
-        favoritesButton.setImage(Images.favorite, for: .normal)
+        favoritesButton.imageView?.setFavoriteImage(detailVC: self)
         favoritesButton.tintColor = .orange
         favoritesButton.contentMode = .scaleAspectFill
     }

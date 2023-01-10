@@ -29,7 +29,6 @@ class NetworkManager {
         decoder.keyDecodingStrategy = .convertFromSnakeCase
         
         guard let url = URL(string: urlString) else { return }
-        print(url)
         
         let dataTask = URLSession.shared.dataTask(with: url) { data, response, error in
             guard error == nil else {
@@ -51,7 +50,6 @@ class NetworkManager {
                 let result = try self.decoder.decode(T.self, from: data)
                 completion(.success(result))
             } catch {
-                print(error)
                 completion(.failure(.parsingError))
             }
         }

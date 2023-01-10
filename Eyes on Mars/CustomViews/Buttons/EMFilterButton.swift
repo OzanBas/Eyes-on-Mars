@@ -22,7 +22,7 @@ final class EMFilterButton: UIButton {
     
     private func configure() {
         backgroundColor = .orange
-        setTitle("Cam Filter", for: .normal)
+        setTitle("All Cameras", for: .normal)
         setTitleColor(UIColor.white, for: .normal)
         layer.cornerRadius = 10
     }

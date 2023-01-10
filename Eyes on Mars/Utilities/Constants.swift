@@ -30,6 +30,7 @@ enum Images {
     static let opportunityLogo = UIImage(systemName: "camera.metering.matrix")
     static let spiritLogo = UIImage(systemName: "camera.metering.partial")
     static let favorite = UIImage(systemName: "star.fill")
+    static let nonFavorite = UIImage(systemName: "star")
     
 }
 

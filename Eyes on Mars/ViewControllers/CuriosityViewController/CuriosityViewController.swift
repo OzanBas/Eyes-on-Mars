@@ -15,7 +15,7 @@ final class CuriosityViewController: EMDataRequesterVC {
     @IBOutlet private weak var filterPopUpButton: EMFilterButton!
     @IBOutlet private weak var collectionView: UICollectionView!
     @IBOutlet private weak var datePicker: UIDatePicker!
-    
+    @IBOutlet weak var emptyStateView: EMEmptyStateView!
     private var viewModel: RoverViewModel!
     
     
@@ -52,6 +52,7 @@ final class CuriosityViewController: EMDataRequesterVC {
         configureCollectionView()
         setPopUpButton()
         configureDatePicker()
+        emptyStateView.checkToDisplayforRover(viewModel: viewModel)
     }
     
     
@@ -124,9 +125,9 @@ extension CuriosityViewController: UICollectionViewDelegate, UICollectionViewDat
     
     
     func scrollViewDidEndDragging(_ scrollView: UIScrollView, willDecelerate decelerate: Bool) {
-        let offsetY = scrollView.contentOffset.y               // shows how much you scrolled down
-        let contentHeight = scrollView.contentSize.height       // shows initial content height
-        let height = scrollView.frame.size.height           // height of scrollview for current device
+        let offsetY = scrollView.contentOffset.y
+        let contentHeight = scrollView.contentSize.height
+        let height = scrollView.frame.size.height
         
         
         if offsetY > contentHeight - height {
@@ -140,8 +141,12 @@ extension CuriosityViewController: UICollectionViewDelegate, UICollectionViewDat
 
 //MARK: - UIUpdateProtocol
 extension CuriosityViewController: UIUpdateProtocol {
+    
     func didRecieveData() {
-        DispatchQueue.main.async { self.collectionView.reloadData() }
+        DispatchQueue.main.async {
+            self.collectionView.reloadData()
+            self.emptyStateView.checkToDisplayforRover(viewModel: self.viewModel)
+        }
     }
     
     func didRecieveError(error: EMError) {

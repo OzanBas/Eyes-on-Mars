@@ -35,10 +35,9 @@ final class RoverViewModel {
         }
     }
     
-    var selectedCam: String = "" {
+    var selectedCam: String = "All Cameras" {
         didSet {
             filteredRoverModel = roverModel.filter({ $0.camera?.name == selectedCam })
-            print("filtered: \(filteredRoverModel.count)")
             delegate?.didRecieveData()
         }
     }

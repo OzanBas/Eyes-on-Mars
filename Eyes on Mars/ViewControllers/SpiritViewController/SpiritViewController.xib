@@ -15,6 +15,7 @@
                 <outlet property="camButton" destination="gWK-2t-3Np" id="Ugq-eh-W1D"/>
                 <outlet property="collectionView" destination="Tkc-D3-Hom" id="yNF-jF-elz"/>
                 <outlet property="datePicker" destination="ibk-jf-84H" id="LOn-kA-hTF"/>
+                <outlet property="emptyStateView" destination="ZPJ-Vt-uLe" id="82q-JJ-Sxv"/>
                 <outlet property="titleLabel" destination="o6t-JS-fMf" id="wDW-9N-sqJ"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>
@@ -24,7 +25,7 @@
             <rect key="frame" x="0.0" y="0.0" width="390" height="844"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
-                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="BFd-po-rX3">
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="BFd-po-rX3" userLabel="Top View">
                     <rect key="frame" x="0.0" y="0.0" width="390" height="120"/>
                     <subviews>
                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="o6t-JS-fMf">
@@ -89,19 +90,27 @@
                         <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                     </collectionViewFlowLayout>
                 </collectionView>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ZPJ-Vt-uLe" customClass="EMEmptyStateView" customModule="Eyes_on_Mars" customModuleProvider="target">
+                    <rect key="frame" x="0.0" y="120" width="390" height="690"/>
+                    <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                </view>
             </subviews>
             <viewLayoutGuide key="safeArea" id="fnl-2z-Ty3"/>
             <color key="backgroundColor" systemColor="systemBackgroundColor"/>
             <constraints>
+                <constraint firstItem="fnl-2z-Ty3" firstAttribute="bottom" secondItem="ZPJ-Vt-uLe" secondAttribute="bottom" id="7U8-vD-UqW"/>
+                <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="ZPJ-Vt-uLe" secondAttribute="trailing" id="8rs-7q-gcE"/>
                 <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="Tkc-D3-Hom" secondAttribute="trailing" id="DQf-NT-B9d"/>
                 <constraint firstItem="Tkc-D3-Hom" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" id="IMl-bQ-JnU"/>
                 <constraint firstItem="Tkc-D3-Hom" firstAttribute="top" secondItem="BFd-po-rX3" secondAttribute="bottom" id="MwJ-wL-Iuk"/>
                 <constraint firstItem="fnl-2z-Ty3" firstAttribute="bottom" secondItem="Tkc-D3-Hom" secondAttribute="bottom" id="T9I-df-64x"/>
                 <constraint firstItem="BFd-po-rX3" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" id="XvP-yo-QlU"/>
+                <constraint firstItem="ZPJ-Vt-uLe" firstAttribute="top" secondItem="BFd-po-rX3" secondAttribute="bottom" id="gzb-Dq-8Yv"/>
                 <constraint firstItem="BFd-po-rX3" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" id="lfz-1q-HwS"/>
                 <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="BFd-po-rX3" secondAttribute="trailing" id="qLe-8u-jaH"/>
+                <constraint firstItem="ZPJ-Vt-uLe" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" id="saF-iF-xLE"/>
             </constraints>
-            <point key="canvasLocation" x="-69" y="2"/>
+            <point key="canvasLocation" x="-69.230769230769226" y="1.4218009478672986"/>
         </view>
     </objects>
     <resources>

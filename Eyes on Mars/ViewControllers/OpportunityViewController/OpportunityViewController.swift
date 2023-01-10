@@ -14,7 +14,7 @@ final class OpportunityViewController: EMDataRequesterVC {
     @IBOutlet private weak var collectionView: UICollectionView!
     @IBOutlet private weak var datePicker: UIDatePicker!
     @IBOutlet private weak var filterCamButton: UIButton!
-    
+    @IBOutlet weak var emptyStateView: EMEmptyStateView!
     
     private var viewModel: RoverViewModel!
     
@@ -52,6 +52,7 @@ final class OpportunityViewController: EMDataRequesterVC {
         configureCollectionView()
         setPopUpButton()
         configureDatePicker()
+        emptyStateView.checkToDisplayforRover(viewModel: viewModel)
     }
     
     
@@ -141,7 +142,10 @@ extension OpportunityViewController: UICollectionViewDelegate, UICollectionViewD
 //MARK: - Update Protocol
 extension OpportunityViewController: UIUpdateProtocol {
     func didRecieveData() {
-        DispatchQueue.main.async { self.collectionView.reloadData() }
+        DispatchQueue.main.async {
+            self.collectionView.reloadData()
+            self.emptyStateView.checkToDisplayforRover(viewModel: self.viewModel)
+        }
     }
     
     func didRecieveError(error: EMError) {

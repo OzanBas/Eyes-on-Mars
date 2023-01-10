@@ -11,6 +11,7 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="FavoritesViewController" customModule="Eyes_on_Mars" customModuleProvider="target">
             <connections>
+                <outlet property="emptyStateView" destination="bea-si-hy5" id="3cl-aS-arK"/>
                 <outlet property="tableView" destination="Vr1-98-FC2" id="0VT-Xq-Yvc"/>
                 <outlet property="titleLabel" destination="wMi-se-E9P" id="6hf-0m-suU"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
@@ -46,15 +47,23 @@
                     <rect key="frame" x="0.0" y="100" width="390" height="710"/>
                     <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                 </tableView>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="bea-si-hy5" customClass="EMEmptyStateView" customModule="Eyes_on_Mars" customModuleProvider="target">
+                    <rect key="frame" x="0.0" y="100" width="390" height="710"/>
+                    <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                </view>
             </subviews>
             <viewLayoutGuide key="safeArea" id="fnl-2z-Ty3"/>
             <color key="backgroundColor" systemColor="systemBackgroundColor"/>
             <constraints>
+                <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="bea-si-hy5" secondAttribute="trailing" id="FER-t8-5bj"/>
                 <constraint firstItem="N9J-y7-au5" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" id="TDe-IP-RTC"/>
                 <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="Vr1-98-FC2" secondAttribute="trailing" id="Uis-nN-eVO"/>
                 <constraint firstItem="fnl-2z-Ty3" firstAttribute="bottom" secondItem="Vr1-98-FC2" secondAttribute="bottom" id="YLN-en-3di"/>
                 <constraint firstItem="N9J-y7-au5" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" id="k31-cs-DmY"/>
+                <constraint firstItem="fnl-2z-Ty3" firstAttribute="bottom" secondItem="bea-si-hy5" secondAttribute="bottom" id="mMS-KZ-2cX"/>
+                <constraint firstItem="bea-si-hy5" firstAttribute="top" secondItem="N9J-y7-au5" secondAttribute="bottom" id="pti-cN-3Uj"/>
                 <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="N9J-y7-au5" secondAttribute="trailing" id="rXR-Vb-N8k"/>
+                <constraint firstItem="bea-si-hy5" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" id="s0p-EO-Agq"/>
                 <constraint firstItem="Vr1-98-FC2" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" id="y2t-id-2Aa"/>
                 <constraint firstItem="Vr1-98-FC2" firstAttribute="top" secondItem="N9J-y7-au5" secondAttribute="bottom" id="yX3-oc-u1e"/>
             </constraints>

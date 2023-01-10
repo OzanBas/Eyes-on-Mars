@@ -19,7 +19,6 @@ final class FavoritesViewModel {
             switch result {
             case .success(let photos):
                 self.roverModel = photos
-                print(self.roverModel.count)
                 self.delegate?.didRecieveData()
                 self.delegate?.didFinishLoading()
             case .failure(let error):

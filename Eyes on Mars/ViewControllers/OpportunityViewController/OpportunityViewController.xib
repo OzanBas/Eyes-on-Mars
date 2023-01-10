@@ -14,6 +14,7 @@
             <connections>
                 <outlet property="collectionView" destination="LUY-Cd-uiD" id="fji-5z-nEz"/>
                 <outlet property="datePicker" destination="S4W-wj-1sO" id="fuv-Fp-m3a"/>
+                <outlet property="emptyStateView" destination="bgc-ao-5ni" id="rpP-PJ-E4w"/>
                 <outlet property="filterCamButton" destination="cs1-Nc-Kh9" id="dqW-qX-LIf"/>
                 <outlet property="titleLabel" destination="pcC-Zw-pRb" id="k3r-Iu-uep"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
@@ -89,17 +90,25 @@
                         <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                     </collectionViewFlowLayout>
                 </collectionView>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="bgc-ao-5ni" customClass="EMEmptyStateView" customModule="Eyes_on_Mars" customModuleProvider="target">
+                    <rect key="frame" x="0.0" y="120" width="390" height="690"/>
+                    <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                </view>
             </subviews>
             <viewLayoutGuide key="safeArea" id="fnl-2z-Ty3"/>
             <color key="backgroundColor" systemColor="systemBackgroundColor"/>
             <constraints>
+                <constraint firstItem="bgc-ao-5ni" firstAttribute="top" secondItem="kZe-05-oLQ" secondAttribute="bottom" id="1XB-fx-Psn"/>
                 <constraint firstItem="fnl-2z-Ty3" firstAttribute="bottom" secondItem="LUY-Cd-uiD" secondAttribute="bottom" id="E3z-DZ-1WF"/>
+                <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="bgc-ao-5ni" secondAttribute="trailing" id="KNR-DG-E4T"/>
                 <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="LUY-Cd-uiD" secondAttribute="trailing" id="MV5-Uk-nht"/>
                 <constraint firstItem="kZe-05-oLQ" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" id="Nwi-ea-TIe"/>
                 <constraint firstItem="LUY-Cd-uiD" firstAttribute="top" secondItem="kZe-05-oLQ" secondAttribute="bottom" id="Rnp-2l-PeY"/>
                 <constraint firstItem="kZe-05-oLQ" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" id="Vyp-iV-tUd"/>
+                <constraint firstItem="fnl-2z-Ty3" firstAttribute="bottom" secondItem="bgc-ao-5ni" secondAttribute="bottom" id="ftY-f5-mEQ"/>
                 <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="kZe-05-oLQ" secondAttribute="trailing" id="rBl-zS-Abs"/>
                 <constraint firstItem="LUY-Cd-uiD" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" id="rf0-Tv-vAx"/>
+                <constraint firstItem="bgc-ao-5ni" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" id="s5t-sM-L0i"/>
             </constraints>
             <point key="canvasLocation" x="48" y="-11"/>
         </view>

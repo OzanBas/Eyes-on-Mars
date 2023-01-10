@@ -15,6 +15,8 @@ final class SpiritViewController: EMDataRequesterVC {
     @IBOutlet private weak var camButton: UIButton!
     @IBOutlet private weak var collectionView: UICollectionView!
     
+    @IBOutlet weak var emptyStateView: EMEmptyStateView!
+    
     private var viewModel: RoverViewModel!
     
     
@@ -42,6 +44,7 @@ final class SpiritViewController: EMDataRequesterVC {
             viewModel.selectedDate = datePicker.date.inNasaFormat()
         }
 
+    
     //MARK: - Configurations
     private func configureViewController() {
         titleLabel.text = "Spirit"
@@ -50,19 +53,19 @@ final class SpiritViewController: EMDataRequesterVC {
         configureCollectionView()
         setPopUpButton()
         configureDatePicker()
+        emptyStateView.checkToDisplayforRover(viewModel: viewModel)
     }
     
     
     private func setPopUpButton() {
         let optionClosure = {(action : UIAction) in
+            self.viewModel.selectedCam = action.title
             if action.title == "All Cameras" {
                 self.viewModel.isMorePhotosAvailable = true
                 self.viewModel.isFiltered = false
-                self.viewModel.selectedCam = ""
             } else {
                 self.viewModel.isFiltered = true
                 self.viewModel.isMorePhotosAvailable = false
-                self.viewModel.selectedCam = action.title
             }
         }
         
@@ -94,7 +97,7 @@ final class SpiritViewController: EMDataRequesterVC {
         collectionView.delegate = self
         }
 }
-   
+
 
 //MARK: - CollectionView Extension
 extension SpiritViewController: UICollectionViewDelegate, UICollectionViewDataSource {
@@ -139,7 +142,10 @@ extension SpiritViewController: UICollectionViewDelegate, UICollectionViewDataSo
 //MARK: - UIUpdateProtocol
 extension SpiritViewController: UIUpdateProtocol {
     func didRecieveData() {
-        DispatchQueue.main.async { self.collectionView.reloadData() }
+        DispatchQueue.main.async {
+            self.collectionView.reloadData()
+            self.emptyStateView.checkToDisplayforRover(viewModel: self.viewModel)
+        }
     }
     
     func didRecieveError(error: EMError) {

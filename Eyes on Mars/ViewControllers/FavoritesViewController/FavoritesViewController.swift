@@ -10,6 +10,7 @@ import UIKit
 final class FavoritesViewController: EMDataRequesterVC {
 
     //MARK: - Properties
+    @IBOutlet weak var emptyStateView: EMEmptyStateView!
     @IBOutlet weak var titleLabel: UILabel!
     @IBOutlet weak var tableView: UITableView!
     var viewModel: FavoritesViewModel!
@@ -61,7 +62,8 @@ final class FavoritesViewController: EMDataRequesterVC {
 //MARK: - TableView Extension
 extension FavoritesViewController: UITableViewDataSource, UITableViewDelegate {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return viewModel.roverModel.count
+        let count = viewModel.roverModel.count
+        return count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -83,12 +85,23 @@ extension FavoritesViewController: UITableViewDataSource, UITableViewDelegate {
         }
         self.viewModel.loadFavorites()
     }
+    
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let detailVC = DetailsViewController(roverModel: viewModel.roverModel[indexPath.row])
+        detailVC.delegate = self
+        present(detailVC, animated: true)
+    }
+    
 }
 
 //MARK: - UIUpdateProtocol
 extension FavoritesViewController: UIUpdateProtocol {
     func didRecieveData() {
-        DispatchQueue.main.async { self.tableView.reloadData() }
+        DispatchQueue.main.async {
+            self.tableView.reloadData()
+            self.emptyStateView.checkToDisplayForFavorites(for: self)
+        }
     }
     
     func didRecieveError(error: EMError) {
@@ -103,3 +116,4 @@ extension FavoritesViewController: UIUpdateProtocol {
         dismissActivityIndicator()
     }
 }
+
